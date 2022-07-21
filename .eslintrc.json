@@ -20,6 +20,6 @@
         "space-before-function-paren": ["error", "never"],
         "require-await": "error",
         "arrow-parens": "error",
-        "arrow-spacing": [{"before": true, "after": true}]
+        "arrow-spacing": ["error", {"before": true, "after": true}]
     }
 }

@@ -24,7 +24,7 @@ export class Server {
           'env'
         )} mode`
       );
-      console.log('   Press CTRL-C to stop\n');
+      console.log('\nPress CTRL-C to stop...');
     });
   };
 

@@ -1,8 +1,8 @@
-import { App } from "./App";
+import { App } from './App';
 
 try {
-  new App().start()
+  new App().start();
 } catch (error: any) {
-  console.log(error)
-  process.exit(1)
+  console.log(error);
+  process.exit(1);
 }

@@ -14,6 +14,6 @@ export class App {
   }
 
   public stop = () => {
-    this.server?.stop()
+    this.server?.stop();
   };
 }
