@@ -1,5 +1,7 @@
 import express, { Application, Router } from 'express';
 import http from 'http';
+import dotenv from 'dotenv';
+
 import { registerRoutes } from './routes';
 
 export class Server {
@@ -11,6 +13,7 @@ export class Server {
     this.port = port;
     this.app = express();
 
+    dotenv.config();
     this.middleware();
 
     const router = Router();

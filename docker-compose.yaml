@@ -1,0 +1,8 @@
+services:
+  teslodb:
+    image: mongo:5.0.0
+    container_name: gym-routine-database
+    ports:
+      - 27017:27017
+    volumes:
+      - C:\Users\adalb\workspace\Web Development\Databases\mongo\gym-routine:/data/db
