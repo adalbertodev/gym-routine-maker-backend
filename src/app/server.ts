@@ -1,5 +1,6 @@
-import express, { Application } from 'express';
+import express, { Application, Router } from 'express';
 import http from 'http';
+import { registerRoutes } from './routes';
 
 export class Server {
   private app: Application;
@@ -11,6 +12,10 @@ export class Server {
     this.app = express();
 
     this.middleware();
+
+    const router = Router();
+    this.app.use(router);
+    this.app.use('/api', registerRoutes(router));
   }
 
   private middleware = () => {
