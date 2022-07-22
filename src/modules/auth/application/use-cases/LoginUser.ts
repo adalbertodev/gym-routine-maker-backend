@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 
-import { FailedUserCredentials, User, UserEmail, UserRepository } from '../domain/User';
+import { FailedUserCredentials } from '../../domain/Errors';
+import { User, UserEmail, UserRepository } from '../../domain/User';
 
 export class LoginUser {
   private repository: UserRepository;
@@ -22,6 +23,6 @@ export class LoginUser {
       throw new FailedUserCredentials();
     };
 
-    return User.fromPrimitiveObject(userPrimitive);
+    return User.fromPrimitives(userPrimitive);
   };
 }

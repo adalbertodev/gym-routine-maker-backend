@@ -1,4 +1,4 @@
-import { UserResponse } from '../domain/User/UserResponse';
+import { UserResponse } from '../entities/UserResponse';
 
 export interface LoginResponse {
   user: UserResponse,

@@ -1,5 +1,5 @@
 import { PrimitiveObject } from './PrimitiveObject';
 
-export abstract class ObjectDB {
+export abstract class AggregateRoot {
   abstract toPrimitives: () => PrimitiveObject;
 }

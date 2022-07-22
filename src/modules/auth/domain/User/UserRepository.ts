@@ -2,7 +2,7 @@ import { User } from './User';
 import { UserEmail } from './UserEmail';
 import { Nullable } from '../../../shared/domain/Nullable';
 import { UserId } from '../../../shared/domain/UserId';
-import { UserPrimitive } from './UserPrimitive';
+import { UserPrimitive } from '../interfaces/UserPrimitive';
 
 export interface UserRepository {
   searchAll: () => Promise<UserPrimitive[]>;

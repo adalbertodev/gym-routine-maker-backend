@@ -1,4 +1,4 @@
-import { User, UserRepository } from '../domain/User';
+import { User, UserRepository } from '../../domain/User';
 
 export class GetAllUsers {
   private repository: UserRepository;
@@ -9,6 +9,6 @@ export class GetAllUsers {
 
   public run = async() => {
     const usersPrimitive = await this.repository.searchAll();
-    return usersPrimitive.map((userPrimitive) => User.fromPrimitiveObject(userPrimitive));
+    return usersPrimitive.map((userPrimitive) => User.fromPrimitives(userPrimitive));
   };
 }

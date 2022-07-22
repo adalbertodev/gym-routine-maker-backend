@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
 
-import { ConnectionManager } from '../infrastructure/persistence/ConnectionManager';
-import { Controller } from '../../shared/interfaces/Controller';
-import { ErrorResponse } from '../../shared/interfaces/ErrorResponse';
+import { ConnectionManager } from '../../infrastructure/persistence/ConnectionManager';
+import { Controller } from '../../../shared/interfaces/Controller';
+import { ErrorResponse } from '../../../shared/interfaces/ErrorResponse';
 import { LoginResponse } from '../interfaces/LoginResponse';
-import { RegisterUser } from '../application/RegisterUser';
-import { UserAlreadyExists, UserResponse } from '../domain/User';
-import { JWT } from '../domain/JWT';
+import { RegisterUser } from '../use-cases/RegisterUser';
+import { signToken } from '../utils/handleJwt';
+import { UserAlreadyExists } from '../../domain/Errors';
+import { UserResponse } from '../entities/UserResponse';
 
 export class AuthRegisterController implements Controller {
   public run = async(req: Request, res: Response<LoginResponse | ErrorResponse>) => {
@@ -17,7 +18,7 @@ export class AuthRegisterController implements Controller {
 
       const user = await new RegisterUser(repository).run({ name, email, password, repeatedPassword });
       const userResponse = UserResponse.fromUser(user);
-      const token = JWT.signToken(userResponse);
+      const token = signToken(userResponse);
 
       await ConnectionManager.mongoDisconnect();
       return res.status(200).json({ user: userResponse, token });

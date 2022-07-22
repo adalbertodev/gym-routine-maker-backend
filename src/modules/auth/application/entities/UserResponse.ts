@@ -1,5 +1,5 @@
-import { User } from './User';
-import { UserPrimitive } from './UserPrimitive';
+import { User } from '../../domain/User/User';
+import { UserPrimitive } from '../../domain/interfaces/UserPrimitive';
 
 export class UserResponse {
   readonly id: string;

@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 
-import { ConnectionManager } from '../infrastructure/persistence/ConnectionManager';
-import { Controller } from '../../shared/interfaces/Controller';
-import { ErrorResponse } from '../../shared/interfaces/ErrorResponse';
-import { GetAllUsers } from '../application/GetAllUsers';
+import { ConnectionManager } from '../../infrastructure/persistence/ConnectionManager';
+import { Controller } from '../../../shared/interfaces/Controller';
+import { ErrorResponse } from '../../../shared/interfaces/ErrorResponse';
+import { GetAllUsers } from '../use-cases/GetAllUsers';
 import { GetResponse } from '../interfaces/GetResponse';
-import { UserResponse } from '../domain/User';
+import { UserResponse } from '../entities/UserResponse';
 
 export class AuthGetController implements Controller {
   public run = async(req: Request, res: Response<GetResponse | ErrorResponse>) => {

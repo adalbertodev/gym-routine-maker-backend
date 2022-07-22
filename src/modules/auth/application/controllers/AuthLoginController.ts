@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
 
-import { ConnectionManager } from '../infrastructure/persistence/ConnectionManager';
-import { Controller } from '../../shared/interfaces/Controller';
-import { ErrorResponse } from '../../shared/interfaces/ErrorResponse';
-import { FailedUserCredentials, UserResponse } from '../domain/User';
+import { ConnectionManager } from '../../infrastructure/persistence/ConnectionManager';
+import { Controller } from '../../../shared/interfaces/Controller';
+import { ErrorResponse } from '../../../shared/interfaces/ErrorResponse';
 import { LoginResponse } from '../interfaces/LoginResponse';
-import { LoginUser } from '../application/LoginUser';
-import { JWT } from '../domain/JWT';
+import { LoginUser } from '../use-cases/LoginUser';
+import { FailedUserCredentials } from '../../domain/Errors';
+import { UserResponse } from '../entities/UserResponse';
+import { signToken } from '../utils/handleJwt';
 
 export class AuthLoginController implements Controller {
   public run = async(req: Request, res: Response<LoginResponse | ErrorResponse>) => {
@@ -17,7 +18,7 @@ export class AuthLoginController implements Controller {
 
       const user = await new LoginUser(repository).run({ email, password });
       const userResponse = UserResponse.fromUser(user);
-      const token = JWT.signToken(userResponse);
+      const token = signToken(userResponse);
 
       await ConnectionManager.mongoDisconnect();
       return res.status(200).json({ user: userResponse, token });

@@ -3,7 +3,7 @@ import { Nullable } from '../../../shared/domain/Nullable';
 import { User } from '../../domain/User/User';
 import { UserEmail } from '../../domain/User/UserEmail';
 import { UserId } from '../../../shared/domain/UserId';
-import { UserPrimitive } from '../../domain/User/UserPrimitive';
+import { UserPrimitive } from '../../domain/interfaces/UserPrimitive';
 import { UserRepository } from '../../domain/User/UserRepository';
 
 export class MongoUserRepository extends MongoRepository<User> implements UserRepository {

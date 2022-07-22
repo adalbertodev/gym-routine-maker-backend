@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 
-import { Controller } from '../../shared/interfaces/Controller';
-import { ErrorResponse } from '../../shared/interfaces/ErrorResponse';
-import { FailedUserCredentials } from '../domain/User';
-import { JWT } from '../domain/JWT';
+import { Controller } from '../../../shared/interfaces/Controller';
+import { ErrorResponse } from '../../../shared/interfaces/ErrorResponse';
+import { FailedUserCredentials } from '../../domain/Errors';
+import { renewToken } from '../utils/handleJwt';
 import { TokenResponse } from '../interfaces/TokenResponse';
 
 export class AuthRenewTokenController implements Controller {
@@ -11,7 +11,7 @@ export class AuthRenewTokenController implements Controller {
     const { sessionToken } = req.cookies;
 
     try {
-      const token = await JWT.renewToken(sessionToken);
+      const token = await renewToken(sessionToken);
 
       return res.status(200).json({ token });
     } catch (error: any) {

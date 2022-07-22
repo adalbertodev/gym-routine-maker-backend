@@ -1,7 +1,7 @@
 import { Collection, MongoClient } from 'mongodb';
-import { ObjectDB } from '../../domain/ObjectDB';
+import { AggregateRoot } from '../../domain/AggregateRoot';
 
-export abstract class MongoRepository<T extends ObjectDB> {
+export abstract class MongoRepository<T extends AggregateRoot> {
   private _client: Promise<MongoClient>;
 
   constructor(client: Promise<MongoClient>) {
