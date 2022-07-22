@@ -10,7 +10,7 @@ export class ConnectionManager {
     return new MongoUserRepository(client);
   };
 
-  public static mongoDisconnect = () => {
-    MongoClientFactory.closeClient(this.dbName);
+  public static mongoDisconnect = async() => {
+    await MongoClientFactory.closeClient(this.dbName);
   };
 }

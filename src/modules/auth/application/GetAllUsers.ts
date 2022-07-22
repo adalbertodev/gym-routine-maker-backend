@@ -1,13 +1,15 @@
-import { MongoUserRepository } from '../infrastructure/persistence/MongoUserRepository';
+import { User } from '../domain/User';
+import { UserRepository } from '../domain/UserRepository';
 
 export class GetAllUsers {
-  private repository: MongoUserRepository;
+  private repository: UserRepository;
 
-  constructor(repository: MongoUserRepository) {
+  constructor(repository: UserRepository) {
     this.repository = repository;
   }
 
   public run = async() => {
-    return await this.repository.searchAll();
+    const usersPrimitive = await this.repository.searchAll();
+    return usersPrimitive.map((userPrimitive) => User.fromPrimitiveObject(userPrimitive));
   };
 }
