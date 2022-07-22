@@ -1,4 +1,4 @@
-import { UserResponse } from '../domain/UserResponse';
+import { UserResponse } from '../domain/User/UserResponse';
 
 export interface GetResponse {
   data: UserResponse | UserResponse[];

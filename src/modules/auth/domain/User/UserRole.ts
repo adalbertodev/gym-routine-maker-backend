@@ -1,5 +1,5 @@
-import { EnumValueObject } from '../../shared/domain/value-object/EnumValueObject';
-import { InvalidArgumentError } from '../../shared/domain/value-object/InvalidArgumentError';
+import { EnumValueObject } from '../../../shared/domain/value-object/EnumValueObject';
+import { InvalidArgumentError } from '../../../shared/domain/value-object/InvalidArgumentError';
 
 export class UserRole extends EnumValueObject<string> {
   constructor(value: string) {

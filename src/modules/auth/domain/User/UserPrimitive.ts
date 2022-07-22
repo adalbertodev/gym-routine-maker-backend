@@ -1,4 +1,4 @@
-import { PrimitiveObject } from '../../shared/domain/PrimitiveObject';
+import { PrimitiveObject } from '../../../shared/domain/PrimitiveObject';
 
 export class UserPrimitive extends PrimitiveObject {
   public _id: string;

@@ -1,9 +1,8 @@
+import bcrypt from 'bcryptjs';
+
 import { InvalidArgumentError } from '../../shared/domain/value-object/InvalidArgumentError';
-import { User } from '../domain/User';
-import { UserAlreadyExists } from '../domain/UserAlreadyExists';
-import { UserEmail } from '../domain/UserEmail';
 import { UserId } from '../../shared/domain/UserId';
-import { UserRepository } from '../domain/UserRepository';
+import { User, UserAlreadyExists, UserEmail, UserRepository } from '../domain/User';
 
 export class RegisterUser {
   private repository: UserRepository;
@@ -25,7 +24,13 @@ export class RegisterUser {
       throw new InvalidArgumentError('Las contraseñas deben ser iguales');
     }
 
-    const newUser = User.fromPrimitives(UserId.random().value, name, email, password, 'user');
+    const newUser = User.fromPrimitives(
+      UserId.random().value,
+      name,
+      email,
+      bcrypt.hashSync(password),
+      'user'
+    );
 
     await this.repository.save(newUser);
 

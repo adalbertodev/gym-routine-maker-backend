@@ -1,5 +1,4 @@
-import { User } from '../domain/User';
-import { UserRepository } from '../domain/UserRepository';
+import { User, UserRepository } from '../domain/User';
 
 export class GetAllUsers {
   private repository: UserRepository;

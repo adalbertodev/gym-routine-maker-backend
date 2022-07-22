@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 
-import { Controller } from '../../shared/interfaces/Controller';
-import { RegisterUser } from '../application/RegisterUser';
 import { ConnectionManager } from '../infrastructure/persistence/ConnectionManager';
-import { UserAlreadyExists } from '../domain/UserAlreadyExists';
+import { Controller } from '../../shared/interfaces/Controller';
 import { ErrorResponse } from '../../shared/interfaces/ErrorResponse';
 import { LoginResponse } from '../interfaces/LoginResponse';
-import { UserResponse } from '../domain/UserResponse';
+import { RegisterUser } from '../application/RegisterUser';
+import { UserAlreadyExists, UserResponse } from '../domain/User';
+import { JWT } from '../domain/JWT';
 
 export class AuthRegisterController implements Controller {
   public run = async(req: Request, res: Response<LoginResponse | ErrorResponse>) => {
@@ -17,9 +17,10 @@ export class AuthRegisterController implements Controller {
 
       const user = await new RegisterUser(repository).run({ name, email, password, repeatedPassword });
       const userResponse = UserResponse.fromUser(user);
+      const token = JWT.signToken(userResponse);
 
       await ConnectionManager.mongoDisconnect();
-      return res.status(200).json({ user: userResponse, token: '' });
+      return res.status(200).json({ user: userResponse, token });
     } catch (error: any) {
       await ConnectionManager.mongoDisconnect();
 

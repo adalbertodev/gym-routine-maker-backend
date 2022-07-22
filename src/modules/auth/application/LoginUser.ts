@@ -1,7 +1,6 @@
-import { FailedUserCredentials } from '../domain/FailedUserCredentials';
-import { User } from '../domain/User';
-import { UserEmail } from '../domain/UserEmail';
-import { UserRepository } from '../domain/UserRepository';
+import bcrypt from 'bcryptjs';
+
+import { FailedUserCredentials, User, UserEmail, UserRepository } from '../domain/User';
 
 export class LoginUser {
   private repository: UserRepository;
@@ -18,7 +17,7 @@ export class LoginUser {
       throw new FailedUserCredentials();
     };
 
-    if (userPrimitive.password !== password) {
+    if (!bcrypt.compareSync(password, userPrimitive.password)) {
       console.log('La contraseña es incorrecta');
       throw new FailedUserCredentials();
     };

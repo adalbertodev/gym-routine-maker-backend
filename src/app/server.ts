@@ -1,6 +1,7 @@
 import express, { Application, Router } from 'express';
 import http from 'http';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 
 import { registerRoutes } from './routes';
 
@@ -23,6 +24,7 @@ export class Server {
 
   private middleware = () => {
     this.app.use(express.json());
+    this.app.use(cookieParser());
   };
 
   public listen = () => {

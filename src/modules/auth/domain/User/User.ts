@@ -1,10 +1,10 @@
-import { ObjectDB } from '../../shared/domain/ObjectDB';
+import { ObjectDB } from '../../../shared/domain/ObjectDB';
 import { UserEmail } from './UserEmail';
-import { UserId } from '../../shared/domain/UserId';
+import { UserId } from '../../../shared/domain/UserId';
 import { UserName } from './UserName';
 import { UserPrimitive } from './UserPrimitive';
-import { UserRole } from './UserRole';
 import { UserPassword } from './UserPassword';
+import { UserRole } from './UserRole';
 
 export class User extends ObjectDB {
   readonly _id: UserId;
