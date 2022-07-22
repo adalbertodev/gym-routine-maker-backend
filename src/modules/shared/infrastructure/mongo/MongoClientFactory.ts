@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-import { Nullable } from '../../entities/Nullable';
+import { Nullable } from '../../domain/Nullable';
 
 import MongoConfig from './MongoConfig';
 
@@ -18,6 +18,15 @@ export class MongoClientFactory {
     return client;
   };
 
+  public static closeClient = async(contextName: string): Promise<void> => {
+    const client = MongoClientFactory.getClient(contextName);
+
+    if (client) {
+      await client.close();
+      this.unregisterClient(contextName);
+    }
+  };
+
   private static getClient = (contextName: string): Nullable<MongoClient> => {
     return MongoClientFactory.clients[contextName];
   };
@@ -32,5 +41,9 @@ export class MongoClientFactory {
 
   private static registerClient = (client: MongoClient, contextName: string): void => {
     MongoClientFactory.clients[contextName] = client;
+  };
+
+  private static unregisterClient = (contextName: string): void => {
+    delete MongoClientFactory.clients[contextName];
   };
 }

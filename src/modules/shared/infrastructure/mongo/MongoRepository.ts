@@ -1,5 +1,5 @@
 import { Collection, MongoClient } from 'mongodb';
-import { ObjectDB } from '../../entities/ObjectDB';
+import { ObjectDB } from '../../domain/ObjectDB';
 
 export abstract class MongoRepository<T extends ObjectDB> {
   private _client: Promise<MongoClient>;
