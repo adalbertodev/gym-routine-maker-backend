@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 import { isValidToken } from '../../../auth/application/utils';
-import { UserResponse } from '../../../auth/application/interfaces';
+import { ResponseUser } from '../../../auth/application/interfaces';
 import { UserRoles } from '../../../auth/domain/interfaces';
 
 export const validateAdminMiddleware = (
@@ -14,11 +14,11 @@ export const validateAdminMiddleware = (
   if (!sessionToken) return res.status(401).json({ error: 'No hay token en la request' });
 
   try {
-    const { id, role } = isValidToken(sessionToken) as UserResponse;
+    const { id, role } = isValidToken(sessionToken) as ResponseUser;
 
     if (role !== UserRoles.ADMIN) return res.status(401).json({ error: 'Acceso no autorizado' });
 
-    req.body = { ...req.body, id };
+    req.params = { ...req.params, userId: id };
   } catch (error: any) {
     return res.status(401).json({ error: 'Token no válido' });
   }

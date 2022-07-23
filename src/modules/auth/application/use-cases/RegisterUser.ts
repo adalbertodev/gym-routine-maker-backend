@@ -5,21 +5,13 @@ import { User, UserEmail, UserRepository } from '../../domain/User';
 import { UserAlreadyExists } from '../../domain/Errors';
 import { UserId } from '../../../shared/domain/UserId';
 import { UserRoles } from '../../domain/interfaces';
+import { RegisterBody } from '../interfaces';
 
-export const registerUser = async(repository: UserRepository, {
-  name,
-  email,
-  password,
-  repeatedPassword
-}: {
-  name: string;
-  email: string;
-  password: string;
-  repeatedPassword: string;
-}): Promise<User> => {
-  const userPrimitive = await repository.searchByEmail(
-    new UserEmail(email)
-  );
+export const registerUser = async(
+  { name, email, password, repeatedPassword }: RegisterBody,
+  repository: UserRepository
+): Promise<User> => {
+  const userPrimitive = await repository.searchByEmail(new UserEmail(email));
 
   if (userPrimitive) {
     console.log('El email ya existe');

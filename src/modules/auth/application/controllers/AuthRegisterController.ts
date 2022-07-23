@@ -1,25 +1,25 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 
-import { AuthResponse } from '../interfaces';
-import { ConnectionManager } from '../../infrastructure/persistence/ConnectionManager';
+import { AuthResponse, RegisterRequest } from '../interfaces';
+import { ConnectionManager } from '../../../shared/infrastructure/persistence/ConnectionManager';
 import { registerUser } from '../use-cases/registerUser';
-import { signToken, userToResponse } from '../utils';
+import { signToken, userToResponseUser } from '../utils';
 import { UserAlreadyExists } from '../../domain/Errors';
 
-export const authRegisterController = async(req: Request, res: Response<AuthResponse>) => {
-  const { name, email, password, repeatedPassword } = req.body;
+export const authRegisterController = async(req: RegisterRequest, res: Response<AuthResponse>) => {
+  const registerBody = req.body;
 
   try {
-    const repository = ConnectionManager.mongoConnect();
+    const repository = ConnectionManager.connect();
 
-    const user = await registerUser(repository, { name, email, password, repeatedPassword });
-    const userResponse = userToResponse(user);
+    const user = await registerUser(registerBody, repository);
+    const userResponse = userToResponseUser(user);
     const token = signToken(userResponse);
 
-    await ConnectionManager.mongoDisconnect();
+    await ConnectionManager.disconnect();
     return res.status(200).json({ data: { user: userResponse, token }, error: null });
   } catch (error: any) {
-    await ConnectionManager.mongoDisconnect();
+    await ConnectionManager.disconnect();
 
     if (error instanceof UserAlreadyExists) {
       return res.status(400).json({ data: null, error: { message: error.message } });

@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-import { Nullable } from '../../domain/Nullable';
+import { Nullable } from '../../../domain/Nullable';
 import MongoConfig from './MongoConfig';
 
 export class MongoClientFactory {

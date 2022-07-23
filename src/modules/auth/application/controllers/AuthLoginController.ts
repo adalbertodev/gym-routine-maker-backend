@@ -1,25 +1,25 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 
-import { AuthResponse, UserResponse } from '../interfaces';
-import { ConnectionManager } from '../../infrastructure/persistence/ConnectionManager';
+import { AuthResponse, LoginRequest } from '../interfaces';
+import { ConnectionManager } from '../../../shared/infrastructure/persistence/ConnectionManager';
 import { FailedUserCredentials } from '../../domain/Errors';
 import { loginUser } from '../use-cases/loginUser';
-import { signToken, userToResponse } from '../utils';
+import { signToken, userToResponseUser } from '../utils';
 
-export const authLoginController = async(req: Request, res: Response<AuthResponse>) => {
-  const { email, password } = req.body;
+export const authLoginController = async(req: LoginRequest, res: Response<AuthResponse>) => {
+  const loginBody = req.body;
 
   try {
-    const repository = ConnectionManager.mongoConnect();
+    const repository = ConnectionManager.connect();
 
-    const user = await loginUser(repository, { email, password });
-    const userResponse: UserResponse = userToResponse(user);
+    const user = await loginUser(loginBody, repository);
+    const userResponse = userToResponseUser(user);
     const token = signToken(userResponse);
 
-    await ConnectionManager.mongoDisconnect();
+    await ConnectionManager.disconnect();
     return res.status(200).json({ data: { user: userResponse, token }, error: null });
   } catch (error: any) {
-    await ConnectionManager.mongoDisconnect();
+    await ConnectionManager.disconnect();
 
     if (error instanceof FailedUserCredentials) {
       const { message } = error;

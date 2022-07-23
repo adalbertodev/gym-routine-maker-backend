@@ -1,6 +1,6 @@
 import { ErrorResponse } from '../../../shared/application/interfaces/ErrorResponse';
 
-export interface UserResponse {
+export interface ResponseUser {
   id: string;
   name: string;
   email: string;
@@ -9,8 +9,8 @@ export interface UserResponse {
 
 export interface AuthResponse {
   data: {
-    user?: UserResponse,
-    users?: UserResponse[],
+    user?: ResponseUser,
+    users?: ResponseUser[],
     token?: string
   } | null,
   error: ErrorResponse | null

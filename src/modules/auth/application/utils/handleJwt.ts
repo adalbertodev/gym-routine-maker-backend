@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 
-import { UserResponse } from '../interfaces';
+import { ResponseUser } from '../interfaces';
 
-export const signToken = (userResponse: UserResponse) => {
+export const signToken = (userResponse: ResponseUser) => {
   if (!process.env.JWT_SECRET_SEED) {
     throw new Error('No hay semilla de JWT');
   }
@@ -17,12 +17,12 @@ export const renewToken = (token: string) => {
     throw new Error('No hay semilla de JWT');
   }
 
-  const decodedPayload = jwt.verify(token, process.env.JWT_SECRET_SEED);
+  const payload = jwt.verify(token, process.env.JWT_SECRET_SEED);
 
-  const { id, name, email, role } = decodedPayload as UserResponse;
-  const payload = { id, name, email, role };
+  const { id, name, email, role } = payload as ResponseUser;
+  const newPayload = { id, name, email, role };
 
-  return jwt.sign(payload, process.env.JWT_SECRET_SEED, { expiresIn: '7d' });
+  return jwt.sign(newPayload, process.env.JWT_SECRET_SEED, { expiresIn: '7d' });
 };
 
 export const isValidToken = (token: string) => {
