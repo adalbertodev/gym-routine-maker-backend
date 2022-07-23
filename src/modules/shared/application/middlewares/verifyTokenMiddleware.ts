@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import { JWT } from '../../auth/domain/JWT';
-import { UserResponse } from '../../auth/domain/User';
+
+import { UserResponse } from '../../../auth/application/entities/UserResponse';
+import { isValidToken } from '../../../auth/application/utils/handleJwt';
 
 export const verifyTokenMiddleware = (
   req: Request,
@@ -12,7 +13,7 @@ export const verifyTokenMiddleware = (
   if (!sessionToken) return res.status(401).json({ error: 'No hay token en la request' });
 
   try {
-    const { id } = JWT.isValidToken(sessionToken) as UserResponse;
+    const { id } = isValidToken(sessionToken) as UserResponse;
 
     req.body = { ...req.body, id };
   } catch (error: any) {

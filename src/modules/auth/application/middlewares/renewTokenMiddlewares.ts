@@ -1,4 +1,4 @@
-import { verifyTokenMiddleware } from '../../../shared/middlewares/verifyTokenMiddleware';
+import { verifyTokenMiddleware } from '../../../shared/application/middlewares/verifyTokenMiddleware';
 
 export const renewTokenMiddlewares = [
   verifyTokenMiddleware

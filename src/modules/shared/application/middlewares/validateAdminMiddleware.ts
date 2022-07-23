@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import { JWT } from '../../auth/domain/JWT';
-import { UserResponse } from '../../auth/domain/User';
+
+import { UserResponse } from '../../../auth/application/entities/UserResponse';
+import { isValidToken } from '../../../auth/application/utils/handleJwt';
 
 export const validateAdminMiddleware = (
   req: Request,
@@ -12,7 +13,7 @@ export const validateAdminMiddleware = (
   if (!sessionToken) return res.status(401).json({ error: 'No hay token en la request' });
 
   try {
-    const { id, role } = JWT.isValidToken(sessionToken) as UserResponse;
+    const { id, role } = isValidToken(sessionToken) as UserResponse;
 
     if (role !== 'admin') return res.status(401).json({ error: 'Acceso no autorizado' });
 

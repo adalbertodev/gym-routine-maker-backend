@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import glob from 'glob';
 
-import { Route } from '../../modules/shared/interfaces/Route';
+import { Route } from '../../modules/shared/application/interfaces/Route';
 
 export const registerRoutes = (router: Router) => {
   const routes = glob.sync('./src/modules/**/*.route.ts', { absolute: true });

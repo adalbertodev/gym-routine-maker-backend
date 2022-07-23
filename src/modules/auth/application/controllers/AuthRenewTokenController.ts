@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
-import { Controller } from '../../../shared/interfaces/Controller';
-import { ErrorResponse } from '../../../shared/interfaces/ErrorResponse';
+import { Controller } from '../../../shared/application/interfaces/Controller';
+import { ErrorResponse } from '../../../shared/application/interfaces/ErrorResponse';
 import { FailedUserCredentials } from '../../domain/Errors';
 import { renewToken } from '../utils/handleJwt';
 import { TokenResponse } from '../interfaces/TokenResponse';

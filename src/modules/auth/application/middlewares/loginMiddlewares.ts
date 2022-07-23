@@ -1,6 +1,6 @@
 import { body } from 'express-validator';
 
-import { fieldValidatorMiddleware } from '../../../shared/middlewares/fieldValidatorMiddleware';
+import { fieldValidatorMiddleware } from '../../../shared/application/middlewares/fieldValidatorMiddleware';
 
 export const loginMiddlewares = [
   body('email', 'El email no es válido').isEmail(),

@@ -1,4 +1,4 @@
-import { validateAdminMiddleware } from '../../../shared/middlewares/validateAdminMiddleware';
+import { validateAdminMiddleware } from '../../../shared/application/middlewares/validateAdminMiddleware';
 
 export const getUsersMiddlewares = [
   validateAdminMiddleware

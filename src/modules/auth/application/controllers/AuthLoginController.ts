@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 
 import { ConnectionManager } from '../../infrastructure/persistence/ConnectionManager';
-import { Controller } from '../../../shared/interfaces/Controller';
-import { ErrorResponse } from '../../../shared/interfaces/ErrorResponse';
+import { Controller } from '../../../shared/application/interfaces/Controller';
+import { ErrorResponse } from '../../../shared/application/interfaces/ErrorResponse';
 import { LoginResponse } from '../interfaces/LoginResponse';
 import { LoginUser } from '../use-cases/LoginUser';
 import { FailedUserCredentials } from '../../domain/Errors';
