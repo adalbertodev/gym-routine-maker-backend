@@ -30,6 +30,11 @@ export class MongoUserRepository extends MongoRepository<User> implements UserRe
     return document;
   };
 
+  public reset = async() => {
+    const collection = await this.collection();
+    await collection.deleteMany({});
+  };
+
   protected moduleName(): string {
     return 'users';
   }

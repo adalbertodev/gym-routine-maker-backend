@@ -5,3 +5,4 @@ export * from './authRenewTokenController';
 
 // USERS CONTROLLERS
 export * from './authGetUsersController';
+export * from './authSeedDataController';

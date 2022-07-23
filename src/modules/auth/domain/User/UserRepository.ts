@@ -9,4 +9,6 @@ export interface UserRepository {
   searchByEmail: (email: UserEmail) => Promise<Nullable<UserPrimitive>>;
 
   save: (user: User) => Promise<void>;
+
+  reset: () => Promise<void>;
 }
