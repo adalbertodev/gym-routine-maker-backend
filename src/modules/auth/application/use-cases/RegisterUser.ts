@@ -5,47 +5,39 @@ import { UserId } from '../../../shared/domain/UserId';
 import { User, UserEmail, UserRepository } from '../../domain/User';
 import { UserAlreadyExists } from '../../domain/Errors';
 
-export class RegisterUser {
-  private repository: UserRepository;
+export const registerUser = async(repository: UserRepository, {
+  name,
+  email,
+  password,
+  repeatedPassword
+}: {
+  name: string;
+  email: string;
+  password: string;
+  repeatedPassword: string;
+}): Promise<User> => {
+  const userPrimitive = await repository.searchByEmail(
+    new UserEmail(email)
+  );
 
-  constructor(repository: UserRepository) {
-    this.repository = repository;
+  if (userPrimitive) {
+    console.log('El email ya existe');
+    throw new UserAlreadyExists(userPrimitive._id);
   }
 
-  public run = async({
+  if (password !== repeatedPassword) {
+    throw new InvalidArgumentError('Las contraseñas deben ser iguales');
+  }
+
+  const newUser = User.fromPrimitives({
+    _id: UserId.random().value,
     name,
     email,
-    password,
-    repeatedPassword
-  }: {
-    name: string;
-    email: string;
-    password: string;
-    repeatedPassword: string;
-  }): Promise<User> => {
-    const userPrimitive = await this.repository.searchByEmail(
-      new UserEmail(email)
-    );
+    password: bcrypt.hashSync(password),
+    role: 'user'
+  });
 
-    if (userPrimitive) {
-      console.log('El email ya existe');
-      throw new UserAlreadyExists(userPrimitive._id);
-    }
+  await repository.save(newUser);
 
-    if (password !== repeatedPassword) {
-      throw new InvalidArgumentError('Las contraseñas deben ser iguales');
-    }
-
-    const newUser = User.fromPrimitives({
-      _id: UserId.random().value,
-      name,
-      email,
-      password: bcrypt.hashSync(password),
-      role: 'user'
-    });
-
-    await this.repository.save(newUser);
-
-    return newUser;
-  };
-}
+  return newUser;
+};

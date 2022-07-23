@@ -12,5 +12,5 @@ export const registerRoutes = (router: Router) => {
 
 const register = async(routePath: string, router: Router) => {
   const route = await import(routePath) as Route;
-  route.register(router);
+  route.registerRoutes(router);
 };
