@@ -1,11 +1,10 @@
 import { Request, Response } from 'express';
 
+import { AuthResponse } from '../interfaces';
 import { ConnectionManager } from '../../infrastructure/persistence/ConnectionManager';
-import { signToken } from '../utils/handleJwt';
-import { UserAlreadyExists } from '../../domain/Errors';
-import { AuthResponse } from '../interfaces/AuthResponse';
 import { registerUser } from '../use-cases/registerUser';
-import { userToResponse } from '../utils/userToResponse';
+import { signToken, userToResponse } from '../utils';
+import { UserAlreadyExists } from '../../domain/Errors';
 
 export const authRegisterController = async(req: Request, res: Response<AuthResponse>) => {
   const { name, email, password, repeatedPassword } = req.body;

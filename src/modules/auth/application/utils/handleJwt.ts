@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { UserResponse } from '../interfaces/AuthResponse';
+
+import { UserResponse } from '../interfaces';
 
 export const signToken = (userResponse: UserResponse) => {
   if (!process.env.JWT_SECRET_SEED) {

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { UserResponse } from '../../../auth/application/interfaces/AuthResponse';
-import { isValidToken } from '../../../auth/application/utils/handleJwt';
+import { isValidToken } from '../../../auth/application/utils';
+import { UserResponse } from '../../../auth/application/interfaces';
 
 export const verifyTokenMiddleware = (
   req: Request,

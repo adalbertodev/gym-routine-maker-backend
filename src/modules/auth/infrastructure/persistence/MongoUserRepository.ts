@@ -1,10 +1,8 @@
 import { MongoRepository } from '../../../shared/infrastructure/mongo/MongoRepository';
 import { Nullable } from '../../../shared/domain/Nullable';
-import { User } from '../../domain/User/User';
-import { UserEmail } from '../../domain/User/UserEmail';
+import { User, UserEmail, UserRepository } from '../../domain/User';
 import { UserId } from '../../../shared/domain/UserId';
-import { UserPrimitive } from '../../domain/interfaces/UserPrimitive';
-import { UserRepository } from '../../domain/User/UserRepository';
+import { UserPrimitive } from '../../domain/interfaces';
 
 export class MongoUserRepository extends MongoRepository<User> implements UserRepository {
   public save = (user: User): Promise<void> => {

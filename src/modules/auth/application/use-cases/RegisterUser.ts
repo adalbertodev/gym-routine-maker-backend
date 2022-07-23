@@ -1,9 +1,10 @@
 import bcrypt from 'bcryptjs';
 
 import { InvalidArgumentError } from '../../../shared/domain/value-object/InvalidArgumentError';
-import { UserId } from '../../../shared/domain/UserId';
 import { User, UserEmail, UserRepository } from '../../domain/User';
 import { UserAlreadyExists } from '../../domain/Errors';
+import { UserId } from '../../../shared/domain/UserId';
+import { UserRoles } from '../../domain/interfaces';
 
 export const registerUser = async(repository: UserRepository, {
   name,
@@ -34,7 +35,7 @@ export const registerUser = async(repository: UserRepository, {
     name,
     email,
     password: bcrypt.hashSync(password),
-    role: 'user'
+    role: UserRoles.USER
   });
 
   await repository.save(newUser);

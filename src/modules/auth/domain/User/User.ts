@@ -1,7 +1,7 @@
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
 import { UserEmail, UserName, UserPassword, UserRole } from './';
 import { UserId } from '../../../shared/domain/UserId';
-import { UserPrimitive } from '../interfaces/UserPrimitive';
+import { UserPrimitive } from '../interfaces';
 
 export class User extends AggregateRoot {
   readonly _id: UserId;

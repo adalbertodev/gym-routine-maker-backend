@@ -1,9 +1,11 @@
 import { EnumValueObject } from '../../../shared/domain/value-object/EnumValueObject';
 import { InvalidArgumentError } from '../../../shared/domain/value-object/InvalidArgumentError';
+import { UserRoles } from '../interfaces';
 
-export class UserRole extends EnumValueObject<string> {
+export class UserRole extends EnumValueObject<`${UserRoles}`> {
   constructor(value: string) {
-    super(value, ['admin', 'user']);
+    const validValues = Object.values(UserRoles);
+    super(value as UserRoles, validValues);
   }
 
   protected throwErrorForInvalidValue(value: string): void {

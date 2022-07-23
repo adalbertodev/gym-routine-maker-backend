@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
+import { AuthResponse } from '../interfaces';
 import { ConnectionManager } from '../../infrastructure/persistence/ConnectionManager';
-import { AuthResponse } from '../interfaces/AuthResponse';
 import { getAllUsers } from '../use-cases/getAllUsers';
 import { userToResponse } from '../utils/userToResponse';
 

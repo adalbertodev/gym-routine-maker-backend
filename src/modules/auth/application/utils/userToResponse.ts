@@ -1,6 +1,6 @@
-import { UserPrimitive } from '../../domain/interfaces/UserPrimitive';
 import { User } from '../../domain/User';
-import { UserResponse } from '../interfaces/AuthResponse';
+import { UserPrimitive } from '../../domain/interfaces';
+import { UserResponse } from '../interfaces';
 
 export const userToResponse = (user: User): UserResponse => {
   return {

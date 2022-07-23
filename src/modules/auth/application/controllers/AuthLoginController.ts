@@ -1,11 +1,10 @@
 import { Request, Response } from 'express';
 
-import { FailedUserCredentials } from '../../domain/Errors';
+import { AuthResponse, UserResponse } from '../interfaces';
 import { ConnectionManager } from '../../infrastructure/persistence/ConnectionManager';
-import { AuthResponse, UserResponse } from '../interfaces/AuthResponse';
+import { FailedUserCredentials } from '../../domain/Errors';
 import { loginUser } from '../use-cases/loginUser';
-import { signToken } from '../utils/handleJwt';
-import { userToResponse } from '../utils/userToResponse';
+import { signToken, userToResponse } from '../utils';
 
 export const authLoginController = async(req: Request, res: Response<AuthResponse>) => {
   const { email, password } = req.body;

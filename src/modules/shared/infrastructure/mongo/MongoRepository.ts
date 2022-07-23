@@ -1,4 +1,5 @@
 import { Collection, MongoClient } from 'mongodb';
+
 import { AggregateRoot } from '../../domain/AggregateRoot';
 
 export abstract class MongoRepository<T extends AggregateRoot> {

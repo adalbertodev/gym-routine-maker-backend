@@ -1,6 +1,6 @@
 import { body } from 'express-validator';
 
-import { fieldValidatorMiddleware } from '../../../shared/application/middlewares/fieldValidatorMiddleware';
+import { fieldValidatorMiddleware } from '../../../shared/application/middlewares';
 
 export const registerMiddlewares = [
   body('name', 'El nombre debe de tener al menos 3 carácteres').isLength({ min: 3 }),

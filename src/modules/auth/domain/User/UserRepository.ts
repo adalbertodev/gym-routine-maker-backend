@@ -1,8 +1,7 @@
-import { User } from './User';
-import { UserEmail } from './UserEmail';
 import { Nullable } from '../../../shared/domain/Nullable';
+import { User, UserEmail } from './';
 import { UserId } from '../../../shared/domain/UserId';
-import { UserPrimitive } from '../interfaces/UserPrimitive';
+import { UserPrimitive } from '../interfaces';
 
 export interface UserRepository {
   searchAll: () => Promise<UserPrimitive[]>;
