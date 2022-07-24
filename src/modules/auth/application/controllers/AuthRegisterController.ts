@@ -1,7 +1,7 @@
 import { Response } from 'express';
 
 import { AuthResponse, RegisterRequest } from '../interfaces';
-import { ConnectionManager } from '../../../shared/infrastructure/persistence/ConnectionManager';
+import { UserConnectionManager } from '../../infrastructure/persistence/UserConnectionManager';
 import { registerUser } from '../use-cases/registerUser';
 import { signToken, userToResponseUser } from '../utils';
 import { UserAlreadyExists } from '../../domain/Errors';
@@ -10,16 +10,16 @@ export const authRegisterController = async(req: RegisterRequest, res: Response<
   const registerBody = req.body;
 
   try {
-    const repository = ConnectionManager.connect();
+    const repository = UserConnectionManager.connect();
 
     const user = await registerUser(registerBody, repository);
     const userResponse = userToResponseUser(user);
     const token = signToken(userResponse);
 
-    await ConnectionManager.disconnect();
+    await UserConnectionManager.disconnect();
     return res.status(200).json({ data: { user: userResponse, token }, error: null });
   } catch (error: any) {
-    await ConnectionManager.disconnect();
+    await UserConnectionManager.disconnect();
 
     if (error instanceof UserAlreadyExists) {
       return res.status(400).json({ data: null, error: { message: error.message } });

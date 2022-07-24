@@ -1,7 +1,7 @@
 import { Response } from 'express';
 
 import { AuthResponse, LoginRequest } from '../interfaces';
-import { ConnectionManager } from '../../../shared/infrastructure/persistence/ConnectionManager';
+import { UserConnectionManager } from '../../infrastructure/persistence/UserConnectionManager';
 import { FailedUserCredentials } from '../../domain/Errors';
 import { loginUser } from '../use-cases/loginUser';
 import { signToken, userToResponseUser } from '../utils';
@@ -10,16 +10,16 @@ export const authLoginController = async(req: LoginRequest, res: Response<AuthRe
   const loginBody = req.body;
 
   try {
-    const repository = ConnectionManager.connect();
+    const repository = UserConnectionManager.connect();
 
     const user = await loginUser(loginBody, repository);
     const userResponse = userToResponseUser(user);
     const token = signToken(userResponse);
 
-    await ConnectionManager.disconnect();
+    await UserConnectionManager.disconnect();
     return res.status(200).json({ data: { user: userResponse, token }, error: null });
   } catch (error: any) {
-    await ConnectionManager.disconnect();
+    await UserConnectionManager.disconnect();
 
     if (error instanceof FailedUserCredentials) {
       const { message } = error;

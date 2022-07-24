@@ -1,8 +1,8 @@
-import { MongoClientFactory } from './mongo/MongoClientFactory';
-import { MongoUserRepository } from '../../../auth/infrastructure/persistence/mongo/MongoUserRepository';
-import { MongoConfigFactory } from './mongo/MongoConfigFactory';
+import { MongoClientFactory } from '../../../shared/infrastructure/persistence/mongo/MongoClientFactory';
+import { MongoUserRepository } from './mongo/MongoUserRepository';
+import { MongoConfigFactory } from '../../../shared/infrastructure/persistence/mongo/MongoConfigFactory';
 
-export class ConnectionManager {
+export class UserConnectionManager {
   private static dbName = 'gym-routine-DB';
 
   public static connect = () => {

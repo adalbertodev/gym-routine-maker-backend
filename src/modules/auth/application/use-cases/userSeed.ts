@@ -1,7 +1,7 @@
 import { User, UserRepository } from '../../domain/User';
 import { usersSeedData } from '../utils';
 
-export const generateSeedData = async(repository: UserRepository): Promise<User[]> => {
+export const userSeed = async(repository: UserRepository): Promise<User[]> => {
   const users = usersSeedData.map((userSeedData) => User.fromPrimitives(userSeedData));
 
   await repository.reset();
