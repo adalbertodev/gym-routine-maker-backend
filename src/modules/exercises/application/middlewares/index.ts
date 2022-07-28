@@ -1,2 +1,1 @@
-export * from './exerciseGetByUserMiddlewares';
-export * from './exerciseSeedMiddlewares';
+export * from './getExercisesByUserMiddlewares';

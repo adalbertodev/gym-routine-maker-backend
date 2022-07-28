@@ -1,10 +1,9 @@
 import { Router } from 'express';
 
-import { getExercisesController, exerciseSeedController, getExercisesByUserController } from '../controllers';
-import { exerciseSeedMiddlewares, exerciseGetByUserMiddlewares } from '../middlewares';
+import { getExercisesController, getExercisesByUserController } from '../controllers';
+import { getExercisesByUserMiddlewares } from '../middlewares';
 
 export const registerRoutes = (router: Router) => {
   router.get('/exercises', getExercisesController);
-  router.get('/exercises/seed', exerciseSeedMiddlewares, exerciseSeedController);
-  router.get('/exercises?userId=:userId', exerciseGetByUserMiddlewares, getExercisesByUserController);
+  router.get('/exercises?userId=:userId', getExercisesByUserMiddlewares, getExercisesByUserController);
 };

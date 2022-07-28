@@ -8,7 +8,10 @@
     "build": "tsc",
     "dev": "ts-node-dev ./src/app/index.ts",
     "lint": "eslint ./src/**/*.ts",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "seed": "npm run seed:user && npm run seed:exercise",
+    "seed:user": "ts-node-dev ./src/modules/auth/infrastructure/persistence/mongo/seeds/usersSeed",
+    "seed:exercise": "ts-node-dev ./src/modules/exercises/infrastructure/persistence/mongo/seeds/exercisesSeed"
   },
   "keywords": [],
   "author": "",

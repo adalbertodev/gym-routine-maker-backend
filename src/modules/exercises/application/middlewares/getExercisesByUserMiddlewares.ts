@@ -1,5 +1,5 @@
 import { validateUserIdMiddleware } from '../../../shared/application/middlewares/validateUserIdMiddleware';
 
-export const exerciseGetByUserMiddlewares = [
+export const getExercisesByUserMiddlewares = [
   validateUserIdMiddleware
 ];

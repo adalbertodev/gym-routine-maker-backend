@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 
-import { UserPrimitive } from '../../domain/interfaces';
+import { UserPrimitive } from '../../../../domain/interfaces';
 
 export const usersSeedData: UserPrimitive[] = [
   {

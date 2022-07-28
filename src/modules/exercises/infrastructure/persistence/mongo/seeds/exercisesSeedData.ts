@@ -1,4 +1,4 @@
-import { ExercisePrimitive } from '../../domain/interfaces';
+import { ExercisePrimitive } from '../../../../domain/interfaces';
 
 export const exercisesSeedData: ExercisePrimitive[] = [
   {

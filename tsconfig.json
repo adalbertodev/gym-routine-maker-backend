@@ -84,5 +84,6 @@
     // "useUnknownInCatchVariables": true,               /* Default catch clause variables as 'unknown' instead of 'any'. */
   },
   "include": ["./src/**/*.ts"],
-  "exclude": ["./node_modules"]
+  "exclude": ["./node_modules"],
+  
 }
