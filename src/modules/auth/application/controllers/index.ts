@@ -1,8 +1,8 @@
 // AUTH CONTROLLERS
-export * from './authLoginController';
-export * from './authRegisterController';
-export * from './authRenewTokenController';
+export * from './loginController';
+export * from './registerController';
+export * from './renewTokenController';
 
 // USERS CONTROLLERS
-export * from './authGetUsersController';
-export * from './authSeedController';
+export * from './getUsersController';
+export * from './usersSeedController';

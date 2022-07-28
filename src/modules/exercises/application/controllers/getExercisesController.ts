@@ -1,18 +1,18 @@
 import { Request, Response } from 'express';
 
 import { ExerciseConnectionManager } from '../../infrastructure/persistence/ExerciseConnectionManager';
-import { getAllExercises } from '../use-cases/getAllExercises';
+import { getExercises } from '../use-cases/getExercises';
 import { ExerciseResponse } from '../interfaces';
 import { exerciseToResponseExercise } from '../utils';
 
-export const exerciseGetAllController = async(
+export const getExercisesController = async(
   req: Request,
   res: Response<ExerciseResponse>
 ) => {
   try {
     const repository = ExerciseConnectionManager.connect();
 
-    const exercises = await getAllExercises(repository);
+    const exercises = await getExercises(repository);
     const responseExercises = exercises.map((exercise) =>
       exerciseToResponseExercise(exercise, { id: true })
     );

@@ -6,7 +6,7 @@ import { exerciseToResponseExercise } from '../utils';
 import { getExercisesByUser } from '../use-cases/getExercisesByUser';
 import { UserId } from '../../../shared/domain/UserId';
 
-export const exercisesGetByUserController = async(
+export const getExercisesByUserController = async(
   req: Request,
   res: Response<ExerciseResponse>
 ) => {

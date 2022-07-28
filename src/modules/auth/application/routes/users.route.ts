@@ -1,12 +1,12 @@
 import { Router } from 'express';
 
-import { authGetUsersController, authSeedController } from '../controllers';
+import { getUsersController, usersSeedController } from '../controllers';
 import { validateAdminMiddleware } from '../../../shared/application/middlewares';
-import { userSeedMiddlewares } from '../middlewares';
+import { usersSeedMiddlewares } from '../middlewares';
 
 export const registerRoutes = (router: Router) => {
   router.use('/auth/users', validateAdminMiddleware);
 
-  router.get('/auth/users', authGetUsersController);
-  router.get('/auth/users/seed', userSeedMiddlewares, authSeedController);
+  router.get('/auth/users', getUsersController);
+  router.get('/auth/users/seed', usersSeedMiddlewares, usersSeedController);
 };

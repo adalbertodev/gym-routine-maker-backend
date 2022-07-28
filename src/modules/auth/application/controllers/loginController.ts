@@ -6,7 +6,7 @@ import { FailedUserCredentials } from '../../domain/Errors';
 import { loginUser } from '../use-cases/loginUser';
 import { signToken, userToResponseUser } from '../utils';
 
-export const authLoginController = async(req: LoginRequest, res: Response<AuthResponse>) => {
+export const loginController = async(req: LoginRequest, res: Response<AuthResponse>) => {
   const loginBody = req.body;
 
   try {

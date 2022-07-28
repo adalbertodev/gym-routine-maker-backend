@@ -1,3 +1,3 @@
-export * from './exerciseGetAllController';
+export * from './getExercisesController';
 export * from './exerciseSeedController';
-export * from './exercisesGetByUserController';
+export * from './getExercisesByUser';

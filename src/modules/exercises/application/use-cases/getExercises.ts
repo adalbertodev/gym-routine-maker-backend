@@ -1,6 +1,6 @@
 import { Exercise, ExerciseRepository } from '../../domain/Exercise';
 
-export const getAllExercises = async(
+export const getExercises = async(
   repository: ExerciseRepository
 ): Promise<Exercise[]> => {
   const exercisesPrimitive = await repository.searchAll();

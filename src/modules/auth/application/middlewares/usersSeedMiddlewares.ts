@@ -1,5 +1,5 @@
 import { devEnvMiddleware } from '../../../shared/application/middlewares';
 
-export const userSeedMiddlewares = [
+export const usersSeedMiddlewares = [
   devEnvMiddleware
 ];

@@ -6,13 +6,13 @@ import {
   renewTokenMiddlewares
 } from '../middlewares';
 import {
-  authLoginController,
-  authRegisterController,
-  authRenewTokenController
+  loginController,
+  registerController,
+  renewTokenController
 } from '../controllers';
 
 export const registerRoutes = (router: Router) => {
-  router.post('/auth', loginMiddlewares, authLoginController);
-  router.post('/auth/new', registerMiddlewares, authRegisterController);
-  router.get('/auth/renew', renewTokenMiddlewares, authRenewTokenController);
+  router.post('/auth', loginMiddlewares, loginController);
+  router.post('/auth/new', registerMiddlewares, registerController);
+  router.get('/auth/renew', renewTokenMiddlewares, renewTokenController);
 };

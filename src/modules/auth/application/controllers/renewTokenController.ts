@@ -4,7 +4,7 @@ import { AuthResponse } from '../interfaces';
 import { FailedUserCredentials } from '../../domain/Errors';
 import { renewToken } from '../utils';
 
-export const authRenewTokenController = (req: Request, res: Response<AuthResponse>) => {
+export const renewTokenController = (req: Request, res: Response<AuthResponse>) => {
   const { sessionToken } = req.cookies;
 
   try {

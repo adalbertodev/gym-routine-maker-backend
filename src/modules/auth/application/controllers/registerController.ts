@@ -6,7 +6,7 @@ import { registerUser } from '../use-cases/registerUser';
 import { signToken, userToResponseUser } from '../utils';
 import { UserAlreadyExists } from '../../domain/Errors';
 
-export const authRegisterController = async(req: RegisterRequest, res: Response<AuthResponse>) => {
+export const registerController = async(req: RegisterRequest, res: Response<AuthResponse>) => {
   const registerBody = req.body;
 
   try {
