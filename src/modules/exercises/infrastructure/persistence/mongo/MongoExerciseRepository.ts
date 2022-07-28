@@ -1,6 +1,6 @@
 import { MongoRepository } from '../../../../shared/infrastructure/persistence/mongo/MongoRepository';
 import { Nullable } from '../../../../shared/domain/Nullable';
-import { Exercise, ExerciseId, ExerciseRepository } from '../../../domain/Exercise';
+import { Exercise, ExerciseId, ExerciseName, ExerciseRepository } from '../../../domain/Exercise';
 import { ExercisePrimitive } from '../../../domain/interfaces';
 import { UserId } from '../../../../shared/domain/UserId';
 
@@ -30,6 +30,20 @@ export class MongoExerciseRepository extends MongoRepository<Exercise> implement
     const document = await collection.findOne<ExercisePrimitive>({ _id: id.value });
 
     return document;
+  };
+
+  public searchByName = async(name: ExerciseName): Promise<Nullable<ExercisePrimitive>> => {
+    const collection = await this.collection();
+    const document = await collection.findOne<ExercisePrimitive>({ name: name.value });
+
+    return document;
+  };
+
+  public delete = async(id: ExerciseId) => {
+    const collection = await this.collection();
+    const deletedExercise = await collection.findOneAndDelete({ _id: id.value });
+
+    return deletedExercise.value as Nullable<ExercisePrimitive>;
   };
 
   public reset = async() => {

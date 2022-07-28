@@ -1,4 +1,4 @@
-export * from './devEnvMiddleware';
 export * from './fieldValidatorMiddleware';
-export * from './validateAdminMiddleware';
+export * from './verifyIsAdminMiddleware';
+export * from './validateUserIdMiddleware';
 export * from './verifyTokenMiddleware';

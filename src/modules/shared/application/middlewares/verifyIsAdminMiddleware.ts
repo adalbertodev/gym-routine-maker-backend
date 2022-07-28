@@ -4,7 +4,7 @@ import { isValidToken } from '../../../auth/application/utils';
 import { ResponseUser } from '../../../auth/application/interfaces';
 import { UserRoles } from '../../../auth/domain/interfaces';
 
-export const validateAdminMiddleware = (
+export const verifyIsAdminMiddleware = (
   req: Request,
   res: Response,
   next: NextFunction

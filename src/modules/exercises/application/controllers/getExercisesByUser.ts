@@ -17,7 +17,7 @@ export const getExercisesByUserController = async(
 
     const exercises = await getExercisesByUser(new UserId(userId), repository);
     const responseExercises = exercises.map((exercise) =>
-      exerciseToResponseExercise(exercise, { id: true })
+      exerciseToResponseExercise(exercise)
     );
 
     await ExerciseConnectionManager.disconnect();
