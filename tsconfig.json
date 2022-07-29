@@ -83,7 +83,7 @@
     // "useDefineForClassFields": true,                  /* Emit ECMAScript-standard-compliant class fields. */
     // "useUnknownInCatchVariables": true,               /* Default catch clause variables as 'unknown' instead of 'any'. */
   },
-  "include": ["./src/**/*.ts"],
+  "include": ["./src/**/*.ts", "./tests/**/*.ts"],
   "exclude": ["./node_modules"],
   
 }

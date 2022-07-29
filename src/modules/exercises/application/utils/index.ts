@@ -1,1 +1,1 @@
-export * from './exerciseToResponse';
+export * from './exerciseToResponseExercise';

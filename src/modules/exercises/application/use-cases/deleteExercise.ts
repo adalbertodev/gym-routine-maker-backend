@@ -1,4 +1,4 @@
-import { InvalidArgumentError } from '../../../shared/domain/value-object/InvalidArgumentError';
+import { ExerciseNotExist } from '../../domain/Errors';
 import { Exercise, ExerciseId, ExerciseRepository } from '../../domain/Exercise';
 
 export const deleteExercise = async(
@@ -9,7 +9,7 @@ export const deleteExercise = async(
 
   if (!deletedExercise) {
     console.log('No existe un ejercicio con ese id');
-    throw new InvalidArgumentError(`No exercise found with this id <${id.value}>`);
+    throw new ExerciseNotExist(`No exercise found with this id <${id.value}>`);
   };
 
   return Exercise.fromPrimitives(deletedExercise);
