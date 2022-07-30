@@ -16,7 +16,7 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "arrow-parens": "error",
+        // "arrow-parens": "error",
         "arrow-spacing": ["error", {"before": true, "after": true}],
         "quotes": ["error", "single"],
         "require-await": "error",

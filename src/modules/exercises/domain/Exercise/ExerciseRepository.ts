@@ -13,6 +13,4 @@ export interface ExerciseRepository {
   searchByName: (name: ExerciseName) => Promise<Nullable<ExercisePrimitive>>;
 
   delete: (id: ExerciseId) => Promise<Nullable<ExercisePrimitive>>;
-
-  reset: () => Promise<void>;
 }

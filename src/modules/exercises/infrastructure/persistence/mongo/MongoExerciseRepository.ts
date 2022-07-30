@@ -19,7 +19,7 @@ export class MongoExerciseRepository extends MongoRepository<Exercise> implement
   public searchByUser = async(userId: UserId): Promise<ExercisePrimitive[]> => {
     const collection = await this.collection();
     const documents = await collection
-      .find<ExercisePrimitive>({ $or: [{ userId }, { userId: null }] })
+      .find<ExercisePrimitive>({ $or: [{ userId: userId.value }, { userId: null }] })
       .toArray();
 
     return documents;
@@ -44,11 +44,6 @@ export class MongoExerciseRepository extends MongoRepository<Exercise> implement
     const deletedExercise = await collection.findOneAndDelete({ _id: id.value });
 
     return deletedExercise.value as Nullable<ExercisePrimitive>;
-  };
-
-  public reset = async() => {
-    const collection = await this.collection();
-    await collection.deleteMany({});
   };
 
   protected moduleName(): string {

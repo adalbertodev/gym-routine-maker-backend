@@ -14,7 +14,7 @@ export class Server {
     this.port = port;
     this.app = express();
 
-    dotenv.config();
+    dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
     this.middleware();
 
     const router = Router();

@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import { AuthResponse } from '../interfaces';
 import { UserConnectionManager } from '../../infrastructure/persistence/UserConnectionManager';
 import { getUsers } from '../use-cases/getUsers';
-import { userToResponseUser } from '../utils/userToResponse';
+import { userToResponseUser } from '../utils';
 
 export const getUsersController = async(req: Request, res: Response<AuthResponse>) => {
   try {
