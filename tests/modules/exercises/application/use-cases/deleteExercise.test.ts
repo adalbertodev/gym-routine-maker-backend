@@ -1,8 +1,8 @@
 import { ExerciseRepositoryMock } from '../../__mocks__/ExerciseRepositoryMock';
 import { exercisesData } from '../../__fixtures__/ExercisesData';
-import { deleteExercise } from '../../../../../src/modules/exercises/application/use-cases/deleteExercise';
-import { ExerciseId } from '../../../../../src/modules/exercises/domain/Exercise';
-import { ExerciseNotExist } from '../../../../../src/modules/exercises/domain/Errors';
+import { deleteExercise } from '../../../../../src/modules/Exercise/exercises/application/use-cases/deleteExercise';
+import { ExerciseId } from '../../../../../src/modules/Exercise/exercises/domain/Exercise';
+import { ExerciseNotExist } from '../../../../../src/modules/Exercise/exercises/domain/Errors';
 
 describe('deleteExercise', () => {
   let repository: ExerciseRepositoryMock;

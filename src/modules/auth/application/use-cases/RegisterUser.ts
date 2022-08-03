@@ -1,9 +1,9 @@
 import bcrypt from 'bcryptjs';
 
-import { InvalidArgumentError } from '../../../shared/domain/value-object/InvalidArgumentError';
+import { InvalidArgumentError } from '../../../Shared/domain/value-object/InvalidArgumentError';
 import { User, UserEmail, UserRepository } from '../../domain/User';
 import { UserAlreadyExists } from '../../domain/Errors';
-import { UserId } from '../../../shared/domain/UserId';
+import { UserId } from '../../../Shared/domain/UserId';
 import { UserRoles } from '../../domain/interfaces';
 import { RegisterBody } from '../interfaces';
 

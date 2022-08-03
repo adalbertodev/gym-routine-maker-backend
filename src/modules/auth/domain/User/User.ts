@@ -1,6 +1,6 @@
-import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
-import { UserEmail, UserName, UserPassword, UserRole } from './';
-import { UserId } from '../../../shared/domain/UserId';
+import { AggregateRoot } from '../../../Shared/domain/AggregateRoot';
+import { UserEmail, UserName, UserPassword, UserRole } from '.';
+import { UserId } from '../../../Shared/domain/UserId';
 import { UserPrimitive } from '../interfaces';
 
 export class User extends AggregateRoot {

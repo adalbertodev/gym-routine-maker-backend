@@ -1,6 +1,6 @@
-import { MongoClientFactory } from '../../../shared/infrastructure/persistence/mongo/MongoClientFactory';
+import { MongoClientFactory } from '../../../Shared/infrastructure/persistence/mongo/MongoClientFactory';
 import { MongoUserRepository } from './mongo/MongoUserRepository';
-import { MongoConfigFactory } from '../../../shared/infrastructure/persistence/mongo/MongoConfigFactory';
+import { MongoConfigFactory } from '../../../Shared/infrastructure/persistence/mongo/MongoConfigFactory';
 
 export class UserConnectionManager {
   private static dbName = 'gym-routine-DB';

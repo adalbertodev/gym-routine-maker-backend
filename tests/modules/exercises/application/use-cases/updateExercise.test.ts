@@ -1,9 +1,9 @@
 import { ExerciseRepositoryMock } from '../../__mocks__/ExerciseRepositoryMock';
 import { exercisesData } from '../../__fixtures__/ExercisesData';
-import { ExerciseId, ExerciseName, ExerciseMuscle, ExerciseBarWeight, ExerciseRm, Exercise } from '../../../../../src/modules/exercises/domain/Exercise';
-import { UserId } from '../../../../../src/modules/shared/domain/UserId';
-import { updateExercise } from '../../../../../src/modules/exercises/application/use-cases/updateExercise';
-import { ExerciseAlreadyExists, ExerciseNotExist } from '../../../../../src/modules/exercises/domain/Errors';
+import { ExerciseId, ExerciseName, ExerciseMuscle, ExerciseBarWeight, ExerciseRm, Exercise } from '../../../../../src/modules/Exercise/exercises/domain/Exercise';
+import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
+import { updateExercise } from '../../../../../src/modules/Exercise/exercises/application/use-cases/updateExercise';
+import { ExerciseAlreadyExists, ExerciseNotExist } from '../../../../../src/modules/Exercise/exercises/domain/Errors';
 
 describe('updateExercise', () => {
   let repository: ExerciseRepositoryMock;

@@ -1,4 +1,4 @@
-import { ExerciseId } from '../../../../../src/modules/exercises/domain/Exercise';
+import { ExerciseId } from '../../../../../src/modules/Exercise/exercises/domain/Exercise';
 import { UuidMother } from '../../../shared/domain/UuidMother';
 
 export class ExerciseIdMother {

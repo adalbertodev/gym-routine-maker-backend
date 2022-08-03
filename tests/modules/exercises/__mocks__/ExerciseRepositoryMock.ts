@@ -2,11 +2,11 @@ import {
   Exercise,
   ExerciseId,
   ExerciseName
-} from '../../../../src/modules/exercises/domain/Exercise';
-import { ExerciseRepository } from '../../../../src/modules/exercises/domain/Exercise/ExerciseRepository';
-import { ExercisePrimitive } from '../../../../src/modules/exercises/domain/interfaces';
-import { Nullable } from '../../../../src/modules/shared/domain/Nullable';
-import { UserId } from '../../../../src/modules/shared/domain/UserId';
+} from '../../../../src/modules/Exercise/exercises/domain/Exercise';
+import { ExerciseRepository } from '../../../../src/modules/Exercise/exercises/domain/Exercise/ExerciseRepository';
+import { ExercisePrimitive } from '../../../../src/modules/Exercise/exercises/domain/interfaces';
+import { Nullable } from '../../../../src/modules/Shared/domain/Nullable';
+import { UserId } from '../../../../src/modules/Shared/domain/UserId';
 
 export class ExerciseRepositoryMock implements ExerciseRepository {
   private mockSave = jest.fn();

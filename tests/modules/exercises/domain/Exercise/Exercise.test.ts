@@ -1,4 +1,4 @@
-import { Exercise } from '../../../../../src/modules/exercises/domain/Exercise';
+import { Exercise } from '../../../../../src/modules/Exercise/exercises/domain/Exercise';
 import { randomExerciseObjectValues } from '../../__fixtures__/ExercisesFixtures';
 
 describe('Exercise', () => {

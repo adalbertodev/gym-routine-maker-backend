@@ -1,6 +1,6 @@
-import { Nullable } from '../../../shared/domain/Nullable';
-import { User, UserEmail } from './';
-import { UserId } from '../../../shared/domain/UserId';
+import { Nullable } from '../../../Shared/domain/Nullable';
+import { User, UserEmail } from '.';
+import { UserId } from '../../../Shared/domain/UserId';
 import { UserPrimitive } from '../interfaces';
 
 export interface UserRepository {

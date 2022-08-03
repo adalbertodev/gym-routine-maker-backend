@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { isValidToken } from '../../../auth/application/utils';
-import { ResponseUser } from '../../../auth/application/interfaces';
-import { UserRoles } from '../../../auth/domain/interfaces';
+import { isValidToken } from '../../../Auth/application/utils';
+import { ResponseUser } from '../../../Auth/application/interfaces';
+import { UserRoles } from '../../../Auth/domain/interfaces';
 
 export const verifyIsAdminMiddleware = (
   req: Request,

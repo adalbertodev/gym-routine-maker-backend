@@ -1,6 +1,6 @@
-import { getExercise } from '../../../../../src/modules/exercises/application/use-cases/getExercise';
-import { ExerciseId } from '../../../../../src/modules/exercises/domain/Exercise';
-import { InvalidArgumentError } from '../../../../../src/modules/shared/domain/value-object/InvalidArgumentError';
+import { getExercise } from '../../../../../src/modules/Exercise/exercises/application/use-cases/getExercise';
+import { ExerciseId } from '../../../../../src/modules/Exercise/exercises/domain/Exercise';
+import { InvalidArgumentError } from '../../../../../src/modules/Shared/domain/value-object/InvalidArgumentError';
 import { ExerciseIdMother } from '../../domain/Exercise';
 import { exercisesData } from '../../__fixtures__/ExercisesData';
 import { ExerciseRepositoryMock } from '../../__mocks__/ExerciseRepositoryMock';

@@ -1,7 +1,7 @@
 import { exercisesData } from '../../__fixtures__/ExercisesData';
 import { ExerciseRepositoryMock } from '../../__mocks__/ExerciseRepositoryMock';
-import { getExercisesByUser } from '../../../../../src/modules/exercises/application/use-cases/getExercisesByUser';
-import { UserId } from '../../../../../src/modules/shared/domain/UserId';
+import { getExercisesByUser } from '../../../../../src/modules/Exercise/exercises/application/use-cases/getExercisesByUser';
+import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
 
 describe('getExercisesByUser', () => {
   let repository: ExerciseRepositoryMock;

@@ -1,4 +1,4 @@
-import { Exercise } from '../../../../src/modules/exercises/domain/Exercise';
+import { Exercise } from '../../../../src/modules/Exercise/exercises/domain/Exercise';
 import { UserIdMother } from '../../shared/domain/UserIdMother';
 import { ExerciseBarWeightMother, ExerciseIdMother, ExerciseMother, ExerciseMuscleMother, ExerciseNameMother, ExerciseRmMother } from '../domain/Exercise';
 

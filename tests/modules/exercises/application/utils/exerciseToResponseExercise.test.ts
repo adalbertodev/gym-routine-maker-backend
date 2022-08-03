@@ -1,4 +1,4 @@
-import { exerciseToResponseExercise } from '../../../../../src/modules/exercises/application/utils';
+import { exerciseToResponseExercise } from '../../../../../src/modules/Exercise/exercises/application/utils';
 import { randomExercise } from '../../__fixtures__/ExercisesFixtures';
 
 describe('exerciseToResponseExercise', () => {

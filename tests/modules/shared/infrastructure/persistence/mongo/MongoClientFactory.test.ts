@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-import { MongoClientFactory } from '../../../../../../src/modules/shared/infrastructure/persistence/mongo/MongoClientFactory';
+import { MongoClientFactory } from '../../../../../../src/modules/Shared/infrastructure/persistence/mongo/MongoClientFactory';
 
 describe('MongoClientFactory', () => {
   const url = process.env.MONGO_URL || '';

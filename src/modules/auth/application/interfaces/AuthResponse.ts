@@ -1,4 +1,4 @@
-import { ErrorResponse } from '../../../shared/application/interfaces/ErrorResponse';
+import { ErrorResponse } from '../../../Shared/application/interfaces/ErrorResponse';
 
 export interface ResponseUser {
   id: string;

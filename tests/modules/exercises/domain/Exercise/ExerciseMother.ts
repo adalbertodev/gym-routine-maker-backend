@@ -5,8 +5,8 @@ import {
   ExerciseNameMother,
   ExerciseRmMother
 } from '.';
-import { Nullable } from '../../../../../src/modules/shared/domain/Nullable';
-import { UserId } from '../../../../../src/modules/shared/domain/UserId';
+import { Nullable } from '../../../../../src/modules/Shared/domain/Nullable';
+import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
 import { UserIdMother } from '../../../shared/domain/UserIdMother';
 import {
   Exercise,
@@ -15,7 +15,7 @@ import {
   ExerciseMuscle,
   ExerciseName,
   ExerciseRm
-} from '../../../../../src/modules/exercises/domain/Exercise';
+} from '../../../../../src/modules/Exercise/exercises/domain/Exercise';
 
 export class ExerciseMother {
   public static create = (

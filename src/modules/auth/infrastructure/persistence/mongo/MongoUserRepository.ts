@@ -1,7 +1,7 @@
-import { MongoRepository } from '../../../../shared/infrastructure/persistence/mongo/MongoRepository';
-import { Nullable } from '../../../../shared/domain/Nullable';
+import { MongoRepository } from '../../../../Shared/infrastructure/persistence/mongo/MongoRepository';
+import { Nullable } from '../../../../Shared/domain/Nullable';
 import { User, UserEmail, UserRepository } from '../../../domain/User';
-import { UserId } from '../../../../shared/domain/UserId';
+import { UserId } from '../../../../Shared/domain/UserId';
 import { UserPrimitive } from '../../../domain/interfaces';
 
 export class MongoUserRepository extends MongoRepository<User> implements UserRepository {

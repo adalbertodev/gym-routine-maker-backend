@@ -10,9 +10,10 @@
     "test": "jest --watchAll",
     "lint": "eslint ./src/**/*.ts",
     "lint:fix": "npm run lint -- --fix",
-    "seed": "npm run seed:user && npm run seed:exercise",
-    "seed:user": "ts-node-dev ./src/modules/auth/infrastructure/persistence/mongo/seeds/usersSeed",
-    "seed:exercise": "ts-node-dev ./src/modules/exercises/infrastructure/persistence/mongo/seeds/exercisesSeed"
+    "seed": "npm run seed:user && npm run seed:exercise && npm run seed:userExercise",
+    "seed:user": "ts-node-dev ./src/modules/Auth/infrastructure/persistence/mongo/seeds/usersSeed",
+    "seed:exercise": "ts-node-dev ./src/modules/Exercise/exercises/infrastructure/persistence/mongo/seeds/exercisesSeed",
+    "seed:userExercise": "ts-node-dev ./src/modules/Exercise/users-exercises/infrastructure/persistence/mongo/seeds/usersExercisesSeed"
   },
   "keywords": [],
   "author": "",

@@ -5,7 +5,7 @@ import { UserConnectionManager } from '../../UserConnectionManager';
 import { usersSeedData } from './usersSeedData';
 
 export const usersSeed = async(): Promise<void> => {
-  dotenv.config();
+  dotenv.config({ path: '.env.dev' });
   const repository = UserConnectionManager.connect();
 
   const users = usersSeedData.map((userSeedData) =>

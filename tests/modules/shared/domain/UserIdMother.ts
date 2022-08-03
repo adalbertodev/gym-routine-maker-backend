@@ -1,4 +1,4 @@
-import { UserId } from '../../../../src/modules/shared/domain/UserId';
+import { UserId } from '../../../../src/modules/Shared/domain/UserId';
 import { UuidMother } from './UuidMother';
 
 export class UserIdMother {

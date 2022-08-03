@@ -1,5 +1,5 @@
-import { EnumValueObject } from '../../../shared/domain/value-object/EnumValueObject';
-import { InvalidArgumentError } from '../../../shared/domain/value-object/InvalidArgumentError';
+import { EnumValueObject } from '../../../Shared/domain/value-object/EnumValueObject';
+import { InvalidArgumentError } from '../../../Shared/domain/value-object/InvalidArgumentError';
 import { UserRoles } from '../interfaces';
 
 export class UserRole extends EnumValueObject<`${UserRoles}`> {

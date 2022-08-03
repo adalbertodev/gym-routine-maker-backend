@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { isValidToken } from '../../../auth/application/utils';
-import { ResponseUser } from '../../../auth/application/interfaces';
+import { isValidToken } from '../../../Auth/application/utils';
+import { ResponseUser } from '../../../Auth/application/interfaces';
 
 export const verifyTokenMiddleware = (
   req: Request,
