@@ -1,6 +1,6 @@
-import { ExerciseMuscle } from '../../../../../src/modules/Exercise/exercises/domain/Exercise';
+import { ExerciseMuscle } from '../../../../../src/modules/UserExercises/domain/UserExercises';
 import { EnumMother } from '../../../shared/domain/EnumMother';
-import { ExerciseMuscles } from '../../../../../src/modules/Exercise/exercises/domain/interfaces/ExerciseMuscles';
+import { ExerciseMuscles } from '../../../../../src/modules/UserExercises/domain/interfaces/ExerciseMuscles';
 
 export class ExerciseMuscleMother {
   public static create = (value: string): ExerciseMuscle => {

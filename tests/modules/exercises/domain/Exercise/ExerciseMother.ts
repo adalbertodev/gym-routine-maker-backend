@@ -15,7 +15,7 @@ import {
   ExerciseMuscle,
   ExerciseName,
   ExerciseRm
-} from '../../../../../src/modules/Exercise/exercises/domain/Exercise';
+} from '../../../../../src/modules/UserExercises/domain/UserExercises';
 
 export class ExerciseMother {
   public static create = (

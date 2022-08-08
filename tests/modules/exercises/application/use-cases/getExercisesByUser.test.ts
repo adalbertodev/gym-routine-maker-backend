@@ -1,6 +1,6 @@
 import { exercisesData } from '../../__fixtures__/ExercisesData';
 import { ExerciseRepositoryMock } from '../../__mocks__/ExerciseRepositoryMock';
-import { getExercisesByUser } from '../../../../../src/modules/Exercise/exercises/application/use-cases/getExercisesByUser';
+import { getExercisesByUser } from '../../../../../src/modules/UserExercises/application/use-cases/getExercisesByUser';
 import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
 
 describe('getExercisesByUser', () => {

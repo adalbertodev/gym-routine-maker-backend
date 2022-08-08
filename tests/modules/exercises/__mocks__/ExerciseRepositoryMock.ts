@@ -2,9 +2,9 @@ import {
   Exercise,
   ExerciseId,
   ExerciseName
-} from '../../../../src/modules/Exercise/exercises/domain/Exercise';
-import { ExerciseRepository } from '../../../../src/modules/Exercise/exercises/domain/Exercise/ExerciseRepository';
-import { ExercisePrimitive } from '../../../../src/modules/Exercise/exercises/domain/interfaces';
+} from '../../../../src/modules/UserExercises/domain/UserExercises';
+import { ExerciseRepository } from '../../../../src/modules/UserExercises/domain/UserExercises/ExerciseRepository';
+import { ExercisePrimitive } from '../../../../src/modules/UserExercises/domain/interfaces';
 import { Nullable } from '../../../../src/modules/Shared/domain/Nullable';
 import { UserId } from '../../../../src/modules/Shared/domain/UserId';
 

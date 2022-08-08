@@ -1,4 +1,4 @@
-import { getExercises } from '../../../../../src/modules/Exercise/exercises/application/use-cases/getExercises';
+import { getExercises } from '../../../../../src/modules/UserExercises/application/use-cases/getExercises';
 import { exercisesData } from '../../__fixtures__/ExercisesData';
 import { ExerciseRepositoryMock } from '../../__mocks__/ExerciseRepositoryMock';
 

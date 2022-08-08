@@ -1,9 +1,9 @@
 import { EnvironmentArranger } from '../../../../shared/infrastructure/persistence/arranger/EnvironmentArranger';
 import { ExerciseMother } from '../../../domain/Exercise';
-import { ExerciseRepository } from '../../../../../../src/modules/Exercise/exercises/domain/Exercise/ExerciseRepository';
+import { ExerciseRepository } from '../../../../../../src/modules/UserExercises/domain/UserExercises/ExerciseRepository';
 import { MongoClientFactory } from '../../../../../../src/modules/Shared/infrastructure/persistence/mongo/MongoClientFactory';
 import { MongoEnvironmentArranger } from '../../../../shared/infrastructure/persistence/mongo/MongoEnvironmentArranger';
-import { MongoExerciseRepository } from '../../../../../../src/modules/Exercise/exercises/infrastructure/persistence/mongo/MongoExerciseRepository';
+import { MongoExerciseRepository } from '../../../../../../src/modules/UserExercises/infrastructure/persistence/mongo/MongoExerciseRepository';
 import { UserIdMother } from '../../../../shared/domain/UserIdMother';
 
 describe('MongoExerciseRepository', () => {

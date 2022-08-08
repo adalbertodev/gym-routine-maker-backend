@@ -1,4 +1,4 @@
-import { ExerciseBarWeight } from '../../../../../src/modules/Exercise/exercises/domain/Exercise';
+import { ExerciseBarWeight } from '../../../../../src/modules/UserExercises/domain/UserExercises';
 import { IntegerMother } from '../../../shared/domain/IntegerMother';
 
 export class ExerciseBarWeightMother {

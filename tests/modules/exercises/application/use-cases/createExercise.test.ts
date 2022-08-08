@@ -1,10 +1,10 @@
-import { ExerciseMuscle, ExerciseName, ExerciseBarWeight, ExerciseRm } from '../../../../../src/modules/Exercise/exercises/domain/Exercise';
+import { ExerciseMuscle, ExerciseName, ExerciseBarWeight, ExerciseRm } from '../../../../../src/modules/UserExercises/domain/UserExercises';
 import { ExerciseRepositoryMock } from '../../__mocks__/ExerciseRepositoryMock';
 import { randomExerciseBody } from '../../__fixtures__/ExercisesFixtures';
 import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
-import { createExercise } from '../../../../../src/modules/Exercise/exercises/application/use-cases/createExercise';
+import { createExercise } from '../../../../../src/modules/UserExercises/application/use-cases/createExercise';
 import { Uuid } from '../../../../../src/modules/Shared/domain/value-object/Uuid';
-import { ExerciseAlreadyExists } from '../../../../../src/modules/Exercise/exercises/domain/Errors';
+import { ExerciseAlreadyExists } from '../../../../../src/modules/UserExercises/domain/Errors';
 
 describe('createExercise', () => {
   let repository: ExerciseRepositoryMock;

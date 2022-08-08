@@ -1,4 +1,4 @@
-import { ExerciseRm } from '../../../../../src/modules/Exercise/exercises/domain/Exercise';
+import { ExerciseRm } from '../../../../../src/modules/UserExercises/domain/UserExercises';
 import { IntegerMother } from '../../../shared/domain/IntegerMother';
 
 export class ExerciseRmMother {

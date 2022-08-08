@@ -1,5 +1,5 @@
-import { getExercise } from '../../../../../src/modules/Exercise/exercises/application/use-cases/getExercise';
-import { ExerciseId } from '../../../../../src/modules/Exercise/exercises/domain/Exercise';
+import { getExercise } from '../../../../../src/modules/UserExercises/application/use-cases/getExercise';
+import { ExerciseId } from '../../../../../src/modules/UserExercises/domain/UserExercises';
 import { InvalidArgumentError } from '../../../../../src/modules/Shared/domain/value-object/InvalidArgumentError';
 import { ExerciseIdMother } from '../../domain/Exercise';
 import { exercisesData } from '../../__fixtures__/ExercisesData';

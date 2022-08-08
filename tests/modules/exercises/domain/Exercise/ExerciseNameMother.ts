@@ -1,4 +1,4 @@
-import { ExerciseName } from '../../../../../src/modules/Exercise/exercises/domain/Exercise';
+import { ExerciseName } from '../../../../../src/modules/UserExercises/domain/UserExercises';
 import { WordMother } from '../../../shared/domain/WordMother';
 
 export class ExerciseNameMother {
