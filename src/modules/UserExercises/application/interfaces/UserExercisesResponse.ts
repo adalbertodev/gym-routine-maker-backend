@@ -1,9 +1,9 @@
 import { ErrorResponse } from '../../../Shared/application/interfaces/ErrorResponse';
 
 export interface ResponseUserExercises {
-  _id: string;
+  id: string;
   exercises: {
-    _id: string;
+    id: string;
     name: string;
     muscle: string;
     barWeight: number | null;

@@ -8,7 +8,7 @@ export class UserEmail extends StringValueObject {
   }
 
   private ensureIsValidEmail = (value: string) => {
-    const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/;
 
     if (!value.match(emailRegex)) {
       throw new InvalidArgumentError('The User Email is not a valid email');

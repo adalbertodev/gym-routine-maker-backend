@@ -9,7 +9,7 @@ export class UserPassword extends StringValueObject {
 
   private ensureLengthIsLessThan60Characters = (value: string) => {
     if (value.length > 60) {
-      throw new InvalidArgumentError(`The User Password <${value}> has more than 50 characters`);
+      throw new InvalidArgumentError(`The User Password <${value}> has more than 60 characters`);
     }
   };
 }

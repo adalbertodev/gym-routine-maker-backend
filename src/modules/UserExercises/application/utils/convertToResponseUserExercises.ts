@@ -6,9 +6,9 @@ export const convertToResponseUserExercises = (
 ): ResponseUserExercises => {
   const userExercisesPrimitives = userExercises.toPrimitives();
   return {
-    ...userExercisesPrimitives,
+    id: userExercisesPrimitives._id,
     exercises: userExercisesPrimitives.exercises.map(exercise => ({
-      _id: exercise._id,
+      id: exercise._id,
       name: exercise.name,
       muscle: exercise.muscle,
       barWeight: exercise.barWeight || null,

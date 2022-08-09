@@ -4,7 +4,7 @@ import { AuthResponse, LoginRequest } from '../interfaces';
 import { UserConnectionManager } from '../../infrastructure/persistence/UserConnectionManager';
 import { FailedUserCredentials } from '../../domain/Errors';
 import { loginUser } from '../use-cases/loginUser';
-import { signToken, userToResponseUser } from '../utils';
+import { signToken, convertToResponseUser } from '../utils';
 
 export const loginController = async(req: LoginRequest, res: Response<AuthResponse>) => {
   const loginBody = req.body;
@@ -13,7 +13,7 @@ export const loginController = async(req: LoginRequest, res: Response<AuthRespon
     const repository = UserConnectionManager.connect();
 
     const user = await loginUser(loginBody, repository);
-    const userResponse = userToResponseUser(user);
+    const userResponse = convertToResponseUser(user);
     const token = signToken(userResponse);
 
     await UserConnectionManager.disconnect();

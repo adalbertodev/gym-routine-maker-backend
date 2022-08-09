@@ -1,2 +1,2 @@
 export * from './handleJwt';
-export * from './userToResponseUser';
+export * from './convertToResponseUser';

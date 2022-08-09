@@ -3,7 +3,7 @@ import { Response } from 'express';
 import { AuthResponse, RegisterRequest } from '../interfaces';
 import { UserConnectionManager } from '../../infrastructure/persistence/UserConnectionManager';
 import { registerUser } from '../use-cases/registerUser';
-import { signToken, userToResponseUser } from '../utils';
+import { signToken, convertToResponseUser } from '../utils';
 import { UserAlreadyExists } from '../../domain/Errors';
 
 export const registerController = async(req: RegisterRequest, res: Response<AuthResponse>) => {
@@ -13,7 +13,7 @@ export const registerController = async(req: RegisterRequest, res: Response<Auth
     const repository = UserConnectionManager.connect();
 
     const user = await registerUser(registerBody, repository);
-    const userResponse = userToResponseUser(user);
+    const userResponse = convertToResponseUser(user);
     const token = signToken(userResponse);
 
     await UserConnectionManager.disconnect();
