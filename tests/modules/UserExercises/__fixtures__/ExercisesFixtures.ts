@@ -1,13 +1,13 @@
 import { Exercise } from '../../../../src/modules/UserExercises/domain/UserExercises';
-import { UserIdMother } from '../../shared/domain/UserIdMother';
-import { ExerciseBarWeightMother, ExerciseIdMother, ExerciseMother, ExerciseMuscleMother, ExerciseNameMother, ExerciseRmMother } from '../domain/Exercise';
+import { UserIdMother } from '../../Shared/domain/UserIdMother';
+import { ExerciseBarWeightMother, ExerciseIdMother, ExerciseMother, ExerciseMuscleMother, ExerciseNameMother, ExerciseRmMother } from '../domain/UserExercises';
+import { newExerciseBody } from '../../../../src/modules/UserExercises/application/interfaces/ExerciseRequest';
 
 export const randomExercise = ExerciseMother.random();
 
 export const generateRandomExercise = () => {
   return new Exercise(
     ExerciseIdMother.random(),
-    UserIdMother.random(),
     ExerciseNameMother.random(),
     ExerciseMuscleMother.random(),
     ExerciseBarWeightMother.random(),
@@ -35,8 +35,7 @@ export const randomExerciseValuesWithNulls = {
   rm: null
 };
 
-export const randomExerciseBody = {
-  userId: UserIdMother.random().value,
+export const randomExerciseBody: newExerciseBody = {
   name: ExerciseNameMother.random().value,
   muscle: ExerciseMuscleMother.random().value,
   barWeight: ExerciseBarWeightMother.random().value,

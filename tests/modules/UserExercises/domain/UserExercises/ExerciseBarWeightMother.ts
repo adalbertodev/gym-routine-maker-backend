@@ -1,5 +1,5 @@
 import { ExerciseBarWeight } from '../../../../../src/modules/UserExercises/domain/UserExercises';
-import { IntegerMother } from '../../../shared/domain/IntegerMother';
+import { IntegerMother } from '../../../Shared/domain/IntegerMother';
 
 export class ExerciseBarWeightMother {
   public static create = (value: number): ExerciseBarWeight => {

@@ -16,10 +16,11 @@ export const updateUserExercisesByPercentage = async(
     exercises: userExercisesPrimitive.exercises.map(exercise => {
       const barWeight = exercise.barWeight || 0;
       const percentageAdded = 1 + percentage;
+      const newRm = exercise.rm ? ((exercise.rm + barWeight) * percentageAdded) - barWeight : null;
 
       return {
         ...exercise,
-        rm: exercise.rm ? ((exercise.rm + barWeight) * percentageAdded) - barWeight : null
+        rm: newRm ? Math.floor(newRm * 100) / 100 : null
       };
     })
   };

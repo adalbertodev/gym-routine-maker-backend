@@ -1,9 +1,9 @@
-import { UserExercises, UserExercisesRepository } from '../../domain/UserExercises';
 import { ExerciseAlreadyExists, UserExercisesNotExist } from '../../domain/Errors';
-import { newExerciseBody } from '../interfaces/ExerciseRequest';
-import { Uuid } from '../../../Shared/domain/value-object/Uuid';
-import { UserId } from '../../../Shared/domain/UserId';
 import { ExercisePrimitive } from '../../domain/interfaces';
+import { newExerciseBody } from '../interfaces/ExerciseRequest';
+import { UserExercises, UserExercisesRepository } from '../../domain/UserExercises';
+import { UserId } from '../../../Shared/domain/UserId';
+import { Uuid } from '../../../Shared/domain/value-object/Uuid';
 
 export const newExercise = async(
   userId: UserId,

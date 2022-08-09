@@ -1,5 +1,5 @@
 import { ExerciseId } from '../../../../../src/modules/UserExercises/domain/UserExercises';
-import { UuidMother } from '../../../shared/domain/UuidMother';
+import { UuidMother } from '../../../Shared/domain/UuidMother';
 
 export class ExerciseIdMother {
   public static create = (value: string): ExerciseId => {

@@ -1,5 +1,5 @@
 import { Exercise, UserExercises, UserExercisesRepository } from '../../domain/UserExercises';
-import { ExerciseAlreadyExists, UserExercisesNotExist } from '../../domain/Errors';
+import { ExerciseAlreadyExists, ExerciseNotExist, UserExercisesNotExist } from '../../domain/Errors';
 import { UserId } from '../../../Shared/domain/UserId';
 
 export const updateExercise = async(
@@ -12,13 +12,21 @@ export const updateExercise = async(
 
   const { _id, exercises } = userExercises;
 
+  const exerciseToUpdate = exercises.find(exercise => exercise._id === updatedExercise._id.value);
+  if (!exerciseToUpdate) throw new ExerciseNotExist(userId.value);
+
   const exerciseByName = exercises.find(exercise => exercise.name === updatedExercise.name.value);
 
   if (exerciseByName && exerciseByName._id !== updatedExercise._id.value) {
     throw new ExerciseAlreadyExists(updatedExercise.name.value);
   }
 
-  const newUserExercises = UserExercises.fromPrimitives({ _id, exercises: [...exercises, updatedExercise.toPrimitives()] });
+  const newUserExercises = UserExercises.fromPrimitives({
+    _id,
+    exercises: exercises.map(exercise =>
+      exercise._id === updatedExercise._id.value ? updatedExercise.toPrimitives() : exercise
+    )
+  });
 
   await repository.save(newUserExercises);
   return newUserExercises;

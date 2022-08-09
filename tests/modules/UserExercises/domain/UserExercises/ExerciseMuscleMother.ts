@@ -1,5 +1,5 @@
 import { ExerciseMuscle } from '../../../../../src/modules/UserExercises/domain/UserExercises';
-import { EnumMother } from '../../../shared/domain/EnumMother';
+import { EnumMother } from '../../../Shared/domain/EnumMother';
 import { ExerciseMuscles } from '../../../../../src/modules/UserExercises/domain/interfaces/ExerciseMuscles';
 
 export class ExerciseMuscleMother {

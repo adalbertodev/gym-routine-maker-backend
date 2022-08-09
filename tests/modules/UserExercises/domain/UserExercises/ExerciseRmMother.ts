@@ -1,5 +1,5 @@
 import { ExerciseRm } from '../../../../../src/modules/UserExercises/domain/UserExercises';
-import { IntegerMother } from '../../../shared/domain/IntegerMother';
+import { IntegerMother } from '../../../Shared/domain/IntegerMother';
 
 export class ExerciseRmMother {
   public static create = (value: number): ExerciseRm => {

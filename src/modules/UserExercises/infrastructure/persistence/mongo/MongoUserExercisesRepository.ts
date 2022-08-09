@@ -25,7 +25,7 @@ export class MongoUserExercisesRepository extends MongoRepository<UserExercises>
 
   public delete = async(userId: UserId) => {
     const collection = await this.collection();
-    const document = await collection.findOneAndDelete({ _userId: userId.value });
+    const document = await collection.findOneAndDelete({ _id: userId.value });
 
     return document.value as Nullable<UserExercisesPrimitive>;
   };
