@@ -4,11 +4,7 @@ import { isValidToken } from '../../../Auth/application/utils';
 import { ResponseUser } from '../../../Auth/application/interfaces';
 import { UserRoles } from '../../../Auth/domain/interfaces';
 
-export const verifyIsAdminMiddleware = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const verifyIsAdminMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const { sessionToken } = req.cookies;
 
   if (!sessionToken) return res.status(401).json({ error: 'No hay token en la request' });

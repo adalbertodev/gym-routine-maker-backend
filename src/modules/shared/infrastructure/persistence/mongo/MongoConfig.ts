@@ -1,3 +1,3 @@
-type MongoConfig = {url: string}
+type MongoConfig = { url: string }
 
 export default MongoConfig;

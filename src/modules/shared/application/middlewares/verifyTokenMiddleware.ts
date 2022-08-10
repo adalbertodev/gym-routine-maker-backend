@@ -3,11 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { isValidToken } from '../../../Auth/application/utils';
 import { ResponseUser } from '../../../Auth/application/interfaces';
 
-export const verifyTokenMiddleware = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const verifyTokenMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const { sessionToken } = req.cookies;
 
   if (!sessionToken) return res.status(401).json({ error: 'No hay token en la request' });

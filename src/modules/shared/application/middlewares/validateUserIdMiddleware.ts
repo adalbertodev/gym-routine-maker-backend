@@ -4,11 +4,7 @@ import { isValidToken } from '../../../Auth/application/utils';
 import { ResponseUser } from '../../../Auth/application/interfaces';
 import { UserRoles } from '../../../Auth/domain/interfaces';
 
-export const validateUserIdMiddleware = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const validateUserIdMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const { sessionToken } = req.cookies;
   const { userId } = req.params;
 
