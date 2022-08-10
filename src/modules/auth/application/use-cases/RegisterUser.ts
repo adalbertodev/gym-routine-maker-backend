@@ -1,14 +1,13 @@
 import bcrypt from 'bcryptjs';
 
-import { InvalidArgumentError } from '../../../Shared/domain/value-object/InvalidArgumentError';
+import { RegisterRequestBody } from '../interfaces';
 import { User, UserEmail, UserRepository } from '../../domain/User';
 import { UserAlreadyExists } from '../../domain/Errors';
 import { UserId } from '../../../Shared/domain/UserId';
 import { UserRoles } from '../../domain/interfaces';
-import { RegisterBody } from '../interfaces';
 
 export const registerUser = async(
-  { name, email, password, repeatedPassword }: RegisterBody,
+  { name, email, password }: RegisterRequestBody,
   repository: UserRepository
 ): Promise<User> => {
   const userPrimitive = await repository.searchByEmail(new UserEmail(email));
@@ -16,10 +15,6 @@ export const registerUser = async(
   if (userPrimitive) {
     console.log('El email ya existe');
     throw new UserAlreadyExists(userPrimitive._id);
-  }
-
-  if (password !== repeatedPassword) {
-    throw new InvalidArgumentError('Las contraseñas deben ser iguales');
   }
 
   const newUser = User.fromPrimitives({

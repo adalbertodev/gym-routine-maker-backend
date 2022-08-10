@@ -1,5 +1,5 @@
-import { User } from '../../../../../src/modules/Auth/domain/User';
 import { randomUser, randomUserObjectValues, randomUserValues } from '../../__fixtures__/UsersFixtures';
+import { User } from '../../../../../src/modules/Auth/domain/User';
 
 describe('User', () => {
   describe('#constructor', () => {
@@ -18,7 +18,7 @@ describe('User', () => {
 
   describe('#fromPrimtives', () => {
     test('should return a new user instance form primitives', () => {
-      const { _id, name, email, password, role } = randomUserValues;
+      const { _id, name, email, password, role } = randomUserValues();
       const user = User.fromPrimitives({ _id, name, email, password, role });
 
       expect(user).toBeInstanceOf(User);

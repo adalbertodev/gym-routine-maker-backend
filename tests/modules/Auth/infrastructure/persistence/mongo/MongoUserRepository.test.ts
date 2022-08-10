@@ -1,9 +1,9 @@
-import { UserRepository } from '../../../../../../src/modules/Auth/domain/User';
-import { MongoUserRepository } from '../../../../../../src/modules/Auth/infrastructure/persistence/mongo/MongoUserRepository';
-import { MongoClientFactory } from '../../../../../../src/modules/Shared/infrastructure/persistence/mongo/MongoClientFactory';
 import { EnvironmentArranger } from '../../../../Shared/infrastructure/persistence/arranger/EnvironmentArranger';
+import { MongoClientFactory } from '../../../../../../src/modules/Shared/infrastructure/persistence/mongo/MongoClientFactory';
 import { MongoEnvironmentArranger } from '../../../../Shared/infrastructure/persistence/mongo/MongoEnvironmentArranger';
+import { MongoUserRepository } from '../../../../../../src/modules/Auth/infrastructure/persistence/mongo/MongoUserRepository';
 import { UserMother } from '../../../domain/User';
+import { UserRepository } from '../../../../../../src/modules/Auth/domain/User';
 
 describe('MongoUserRepository', () => {
   const client = MongoClientFactory.createClient('test', { url: process.env.MONGO_URL || '' });

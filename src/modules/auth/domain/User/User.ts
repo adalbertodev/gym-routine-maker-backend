@@ -10,13 +10,7 @@ export class User extends AggregateRoot {
   readonly password: UserPassword;
   readonly role: UserRole;
 
-  constructor(
-    id: UserId,
-    name: UserName,
-    email: UserEmail,
-    password: UserPassword,
-    role: UserRole
-  ) {
+  constructor(id: UserId, name: UserName, email: UserEmail, password: UserPassword, role: UserRole) {
     super();
     this._id = id;
     this.name = name;
@@ -25,13 +19,7 @@ export class User extends AggregateRoot {
     this.role = role;
   }
 
-  public static fromPrimitives = ({
-    _id,
-    name,
-    email,
-    password,
-    role
-  }: UserPrimitive) => {
+  public static fromPrimitives = ({ _id, name, email, password, role }: UserPrimitive) => {
     return new User(
       new UserId(_id),
       new UserName(name),

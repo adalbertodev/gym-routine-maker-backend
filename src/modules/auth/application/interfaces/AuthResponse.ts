@@ -1,17 +1,7 @@
 import { ErrorResponse } from '../../../Shared/application/interfaces/ErrorResponse';
+import { ResponseUser } from './UserResponse';
 
-export interface ResponseUser {
-  id: string;
-  name: string;
-  email: string;
-  role: string;
-}
-
-export interface AuthResponse {
-  data: {
-    user?: ResponseUser,
-    users?: ResponseUser[],
-    token?: string
-  } | null,
-  error: ErrorResponse | null
-}
+export type AuthResponse =
+  | { user: ResponseUser | null; token: string }
+  | { token: string }
+  | { error: ErrorResponse };

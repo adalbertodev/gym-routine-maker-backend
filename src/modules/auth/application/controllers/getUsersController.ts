@@ -1,11 +1,12 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 
-import { AuthResponse } from '../interfaces';
-import { UserConnectionManager } from '../../infrastructure/persistence/UserConnectionManager';
-import { getUsers } from '../use-cases/getUsers';
 import { convertToResponseUser } from '../utils';
+import { getUsers } from '../use-cases/getUsers';
+import { TypedRequest } from '../../../Shared/application/interfaces/TypedRequest';
+import { UserConnectionManager } from '../../infrastructure/persistence/UserConnectionManager';
+import { UserResponse } from '../interfaces';
 
-export const getUsersController = async(req: Request, res: Response<AuthResponse>) => {
+export const getUsersController = async(req: TypedRequest<any>, res: Response<UserResponse>) => {
   try {
     const repository = UserConnectionManager.connect();
 
@@ -13,9 +14,9 @@ export const getUsersController = async(req: Request, res: Response<AuthResponse
     const responseUsers = users.map((user) => convertToResponseUser(user));
 
     await UserConnectionManager.disconnect();
-    return res.status(200).json({ data: { users: responseUsers }, error: null });
+    return res.status(200).json({ data: responseUsers });
   } catch (error: any) {
     await UserConnectionManager.disconnect();
-    return res.status(500).json({ data: null, error: { message: error } });
+    return res.status(500).json({ error: { message: error } });
   }
 };

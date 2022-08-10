@@ -1,12 +1,12 @@
 import bcrypt from 'bcryptjs';
 
-import { UserRepositoryMock } from '../../__mocks__/UserRepositoryMock';
-import { LoginBody } from '../../../../../src/modules/Auth/application/interfaces/AuthRequest';
-import { User, UserEmail } from '../../../../../src/modules/Auth/domain/User';
-import { UuidMother } from '../../../Shared/domain/UuidMother';
-import { loginUser } from '../../../../../src/modules/Auth/application/use-cases/loginUser';
-import { usersData } from '../../__fixtures__/UsersFixtures';
 import { FailedUserCredentials } from '../../../../../src/modules/Auth/domain/Errors';
+import { LoginRequestBody } from '../../../../../src/modules/Auth/application/interfaces';
+import { loginUser } from '../../../../../src/modules/Auth/application/use-cases/loginUser';
+import { User, UserEmail } from '../../../../../src/modules/Auth/domain/User';
+import { UserRepositoryMock } from '../../__mocks__/UserRepositoryMock';
+import { usersData } from '../../__fixtures__/UsersFixtures';
+import { UuidMother } from '../../../Shared/domain/UuidMother';
 
 describe('loginUser', () => {
   let repository: UserRepositoryMock;
@@ -19,7 +19,7 @@ describe('loginUser', () => {
     const password = 'test';
     const user = User.fromPrimitives({ _id: UuidMother.random(), name: 'test', email: 'test@test.com', password: bcrypt.hashSync(password), role: 'user' });
 
-    const loginBody: LoginBody = { email: user.email.value, password };
+    const loginBody: LoginRequestBody = { email: user.email.value, password };
 
     repository.whenSearchThenReturn(user.toPrimitives());
 
@@ -36,7 +36,7 @@ describe('loginUser', () => {
   test('should throw an error if not exist user with the given email', async() => {
     const user = usersData[0];
 
-    const loginBody: LoginBody = { email: user.email, password: user.password };
+    const loginBody: LoginRequestBody = { email: user.email, password: user.password };
 
     repository.whenSearchThenReturn(null);
 
@@ -53,7 +53,7 @@ describe('loginUser', () => {
     const password = 'test';
     const user = User.fromPrimitives({ _id: UuidMother.random(), name: 'test', email: 'test@test.com', password: bcrypt.hashSync('test2'), role: 'user' });
 
-    const loginBody: LoginBody = { email: user.email.value, password };
+    const loginBody: LoginRequestBody = { email: user.email.value, password };
 
     repository.whenSearchThenReturn(user.toPrimitives());
 

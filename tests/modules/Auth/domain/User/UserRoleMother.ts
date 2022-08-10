@@ -1,6 +1,6 @@
-import { UserRoles } from '../../../../../src/modules/Auth/domain/interfaces';
-import { UserRole } from '../../../../../src/modules/Auth/domain/User';
 import { EnumMother } from '../../../Shared/domain/EnumMother';
+import { UserRole } from '../../../../../src/modules/Auth/domain/User';
+import { UserRoles } from '../../../../../src/modules/Auth/domain/interfaces';
 
 export class UserRoleMother {
   public static create = (value: string): UserRole => {

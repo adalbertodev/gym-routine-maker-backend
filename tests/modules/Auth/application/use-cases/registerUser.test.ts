@@ -1,12 +1,11 @@
 import bcrypt from 'bcryptjs';
 
-import { UserRepositoryMock } from '../../__mocks__/UserRepositoryMock';
-import { RegisterBody } from '../../../../../src/modules/Auth/application/interfaces/AuthRequest';
-import { usersData } from '../../__fixtures__/UsersFixtures';
+import { RegisterRequestBody } from '../../../../../src/modules/Auth/application/interfaces';
 import { registerUser } from '../../../../../src/modules/Auth/application/use-cases/registerUser';
-import { UserEmail } from '../../../../../src/modules/Auth/domain/User';
 import { UserAlreadyExists } from '../../../../../src/modules/Auth/domain/Errors';
-import { InvalidArgumentError } from '../../../../../src/modules/Shared/domain/value-object/InvalidArgumentError';
+import { UserEmail } from '../../../../../src/modules/Auth/domain/User';
+import { UserRepositoryMock } from '../../__mocks__/UserRepositoryMock';
+import { usersData } from '../../__fixtures__/UsersFixtures';
 
 describe('registerUser', () => {
   let repository: UserRepositoryMock;
@@ -17,7 +16,7 @@ describe('registerUser', () => {
 
   test('should return a new saved user', async() => {
     const password = 'test';
-    const registerBody: RegisterBody = { name: usersData[0].name, email: usersData[0].email, password, repeatedPassword: password };
+    const registerBody: RegisterRequestBody = { name: usersData[0].name, email: usersData[0].email, password };
 
     repository.whenSearchThenReturn(null);
 
@@ -34,7 +33,7 @@ describe('registerUser', () => {
 
   test('should throw an error if the given email already exist', async() => {
     const password = 'test';
-    const registerBody: RegisterBody = { name: usersData[0].name, email: usersData[0].email, password, repeatedPassword: password };
+    const registerBody: RegisterRequestBody = { name: usersData[0].name, email: usersData[0].email, password };
 
     repository.whenSearchThenReturn(usersData[0]);
 
@@ -43,21 +42,6 @@ describe('registerUser', () => {
       expect(registeredUser).toBeNull();
     } catch (error) {
       expect(error).toBeInstanceOf(UserAlreadyExists);
-    }
-    repository.assertLastSearchedByEmail(new UserEmail(registerBody.email));
-  });
-
-  test('should throw an error if the passwords are not equals', async() => {
-    const password = 'test';
-    const registerBody: RegisterBody = { name: usersData[0].name, email: usersData[0].email, password, repeatedPassword: 'test2' };
-
-    repository.whenSearchThenReturn(null);
-
-    try {
-      const registeredUser = await registerUser(registerBody, repository);
-      expect(registeredUser).toBeNull();
-    } catch (error) {
-      expect(error).toBeInstanceOf(InvalidArgumentError);
     }
     repository.assertLastSearchedByEmail(new UserEmail(registerBody.email));
   });

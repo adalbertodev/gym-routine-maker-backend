@@ -1,10 +1,8 @@
 import { Router } from 'express';
 
 import { getUsersController } from '../controllers';
-import { verifyIsAdminMiddleware } from '../../../Shared/application/middlewares';
+import { getUsersMiddlewares } from '../middlewares';
 
 export const registerRoutes = (router: Router) => {
-  router.use('/auth/users', verifyIsAdminMiddleware);
-
-  router.get('/auth/users', getUsersController);
+  router.get('/auth/users', getUsersMiddlewares, getUsersController);
 };

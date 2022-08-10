@@ -11,7 +11,7 @@ export class UserEmail extends StringValueObject {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/;
 
     if (!value.match(emailRegex)) {
-      throw new InvalidArgumentError('The User Email is not a valid email');
+      throw new InvalidArgumentError('The given email is not a valid email');
     }
   };
 }

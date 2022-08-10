@@ -1,12 +1,13 @@
 import { Response } from 'express';
 
-import { AuthResponse, LoginRequest } from '../interfaces';
-import { UserConnectionManager } from '../../infrastructure/persistence/UserConnectionManager';
+import { AuthResponse, LoginRequestBody } from '../interfaces';
 import { FailedUserCredentials } from '../../domain/Errors';
 import { loginUser } from '../use-cases/loginUser';
 import { signToken, convertToResponseUser } from '../utils';
+import { TypedRequest } from '../../../Shared/application/interfaces/TypedRequest';
+import { UserConnectionManager } from '../../infrastructure/persistence/UserConnectionManager';
 
-export const loginController = async(req: LoginRequest, res: Response<AuthResponse>) => {
+export const loginController = async(req: TypedRequest<LoginRequestBody>, res: Response<AuthResponse>) => {
   const loginBody = req.body;
 
   try {
@@ -17,15 +18,15 @@ export const loginController = async(req: LoginRequest, res: Response<AuthRespon
     const token = signToken(userResponse);
 
     await UserConnectionManager.disconnect();
-    return res.status(200).json({ data: { user: userResponse, token }, error: null });
+    return res.status(200).json({ user: userResponse, token });
   } catch (error: any) {
     await UserConnectionManager.disconnect();
 
     if (error instanceof FailedUserCredentials) {
       const { message } = error;
-      return res.status(400).json({ data: null, error: { message } });
+      return res.status(400).json({ error: { message } });
     }
     console.log(error);
-    return res.status(500).json({ data: null, error: { message: error } });
+    return res.status(500).json({ error: { message: error } });
   }
 };

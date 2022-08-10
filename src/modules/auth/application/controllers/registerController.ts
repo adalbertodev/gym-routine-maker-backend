@@ -1,12 +1,13 @@
 import { Response } from 'express';
 
-import { AuthResponse, RegisterRequest } from '../interfaces';
-import { UserConnectionManager } from '../../infrastructure/persistence/UserConnectionManager';
+import { AuthResponse, RegisterRequestBody } from '../interfaces';
 import { registerUser } from '../use-cases/registerUser';
 import { signToken, convertToResponseUser } from '../utils';
+import { TypedRequest } from '../../../Shared/application/interfaces/TypedRequest';
 import { UserAlreadyExists } from '../../domain/Errors';
+import { UserConnectionManager } from '../../infrastructure/persistence/UserConnectionManager';
 
-export const registerController = async(req: RegisterRequest, res: Response<AuthResponse>) => {
+export const registerController = async(req: TypedRequest<RegisterRequestBody>, res: Response<AuthResponse>) => {
   const registerBody = req.body;
 
   try {
@@ -17,14 +18,14 @@ export const registerController = async(req: RegisterRequest, res: Response<Auth
     const token = signToken(userResponse);
 
     await UserConnectionManager.disconnect();
-    return res.status(200).json({ data: { user: userResponse, token }, error: null });
+    return res.status(200).json({ user: userResponse, token });
   } catch (error: any) {
     await UserConnectionManager.disconnect();
 
     if (error instanceof UserAlreadyExists) {
-      return res.status(400).json({ data: null, error: { message: error.message } });
+      return res.status(400).json({ error: { message: error.message } });
     }
     console.log(error);
-    return res.status(500).json({ data: null, error: { message: error } });
+    return res.status(500).json({ error: { message: error } });
   }
 };

@@ -1,6 +1,6 @@
 import { getUsers } from '../../../../../src/modules/Auth/application/use-cases/getUsers';
-import { usersData } from '../../__fixtures__/UsersFixtures';
 import { UserRepositoryMock } from '../../__mocks__/UserRepositoryMock';
+import { usersData } from '../../__fixtures__/UsersFixtures';
 
 describe('getUsers', () => {
   let repository: UserRepositoryMock;

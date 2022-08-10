@@ -1,5 +1,5 @@
-import { User } from '../../domain/User';
 import { ResponseUser } from '../interfaces';
+import { User } from '../../domain/User';
 
 export const convertToResponseUser = (user: User): ResponseUser => {
   return {

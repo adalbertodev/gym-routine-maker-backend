@@ -31,6 +31,10 @@ export class MongoUserRepository extends MongoRepository<User> implements UserRe
   };
 
   public reset = async() => {
+    if (process.env.NODE_ENV !== 'dev') {
+      return;
+    }
+
     const collection = await this.collection();
     await collection.deleteMany({});
   };
