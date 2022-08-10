@@ -23,13 +23,7 @@ export class Exercise {
     this.rm = rm;
   }
 
-  public static fromPrimitives = ({
-    _id,
-    name,
-    muscle,
-    barWeight,
-    rm
-  }: ExercisePrimitive) => {
+  public static fromPrimitives = ({ _id, name, muscle, barWeight, rm }: ExercisePrimitive) => {
     return new Exercise(
       new ExerciseId(_id),
       new ExerciseName(name),

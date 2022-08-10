@@ -1,9 +1,7 @@
-import { UserExercises } from '../../domain/UserExercises';
 import { ResponseUserExercises } from '../interfaces';
+import { UserExercises } from '../../domain/UserExercises';
 
-export const convertToResponseUserExercises = (
-  userExercises: UserExercises
-): ResponseUserExercises => {
+export const convertToResponseUserExercises = (userExercises: UserExercises): ResponseUserExercises => {
   const userExercisesPrimitives = userExercises.toPrimitives();
   return {
     id: userExercisesPrimitives._id,

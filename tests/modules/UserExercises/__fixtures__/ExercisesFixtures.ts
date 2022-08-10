@@ -1,20 +1,9 @@
-import { Exercise } from '../../../../src/modules/UserExercises/domain/UserExercises';
 import { ExerciseBarWeightMother, ExerciseIdMother, ExerciseMother, ExerciseMuscleMother, ExerciseNameMother, ExerciseRmMother } from '../domain/UserExercises';
-import { newExerciseBody } from '../../../../src/modules/UserExercises/application/interfaces/ExerciseRequest';
+import { SaveExerciseRequestBody } from '../../../../src/modules/UserExercises/application/interfaces/ExerciseRequest';
 
-export const randomExercise = ExerciseMother.random();
+export const randomExercise = () => ExerciseMother.random();
 
-export const generateRandomExercise = () => {
-  return new Exercise(
-    ExerciseIdMother.random(),
-    ExerciseNameMother.random(),
-    ExerciseMuscleMother.random(),
-    ExerciseBarWeightMother.random(),
-    ExerciseRmMother.random()
-  );
-};
-
-export const randomExerciseValues = generateRandomExercise().toPrimitives();
+export const randomExerciseValues = () => ExerciseMother.random().toPrimitives();
 
 export const randomExerciseObjectValues = {
   _id: ExerciseIdMother.random(),
@@ -33,7 +22,7 @@ export const randomExerciseValuesWithNulls = {
   rm: null
 };
 
-export const randomExerciseBody: newExerciseBody = {
+export const randomExerciseBody: SaveExerciseRequestBody = {
   name: ExerciseNameMother.random().value,
   muscle: ExerciseMuscleMother.random().value,
   barWeight: ExerciseBarWeightMother.random().value,

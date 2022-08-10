@@ -1,13 +1,13 @@
 import { ExerciseAlreadyExists, UserExercisesNotExist } from '../../domain/Errors';
 import { ExercisePrimitive } from '../../domain/interfaces';
-import { newExerciseBody } from '../interfaces/ExerciseRequest';
+import { SaveExerciseRequestBody } from '../interfaces/ExerciseRequest';
 import { UserExercises, UserExercisesRepository } from '../../domain/UserExercises';
 import { UserId } from '../../../Shared/domain/UserId';
 import { Uuid } from '../../../Shared/domain/value-object/Uuid';
 
 export const newExercise = async(
   userId: UserId,
-  exerciseBody: newExerciseBody,
+  exerciseBody: SaveExerciseRequestBody,
   repository: UserExercisesRepository
 ): Promise<UserExercises> => {
   const userExercises = await repository.search(userId);

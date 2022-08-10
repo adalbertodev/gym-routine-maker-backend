@@ -1,8 +1,8 @@
-import { UserExercisesRepository } from '../../../../src/modules/UserExercises/domain/UserExercises';
-import { UserExercisesPrimitive } from '../../../../src/modules/UserExercises/domain/interfaces';
 import { Nullable } from '../../../../src/modules/Shared/domain/Nullable';
-import { UserId } from '../../../../src/modules/Shared/domain/UserId';
 import { UserExercises } from '../../../../src/modules/UserExercises/domain/UserExercises/UserExercises';
+import { UserExercisesPrimitive } from '../../../../src/modules/UserExercises/domain/interfaces';
+import { UserExercisesRepository } from '../../../../src/modules/UserExercises/domain/UserExercises';
+import { UserId } from '../../../../src/modules/Shared/domain/UserId';
 
 export class UserExercisesRepositoryMock implements UserExercisesRepository {
   private mockSave = jest.fn();

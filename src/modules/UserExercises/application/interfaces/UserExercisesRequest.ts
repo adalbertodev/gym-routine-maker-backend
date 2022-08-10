@@ -1,10 +1,9 @@
-import { Request } from 'express';
-import { DryExerciseWithRmPrimitive } from '../../domain/interfaces/UserExercisesPrimitive';
+import { ExercisePrimitive } from '../../domain/interfaces';
 
-export interface SaveUserExerciseRequest extends Request {
-  body: { exercises: DryExerciseWithRmPrimitive[] };
+export interface SaveUserExercisesRequestBody {
+  exercises: ExercisePrimitive[]
 }
 
-export interface UpdateUserExerciseByPercentageRequest extends Request {
-  body: { percentage: number };
+export interface UpdateUserExerciseRequestBody {
+  percentage: number
 }

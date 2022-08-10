@@ -1,10 +1,6 @@
 import { UserExercisesRepository, UserExercises } from '../../domain/UserExercises';
 
-export const getUsersExercises = async(
-  repository: UserExercisesRepository
-): Promise<UserExercises[]> => {
+export const getUsersExercises = async(repository: UserExercisesRepository): Promise<UserExercises[]> => {
   const usersExercisesPrimitive = await repository.searchAll();
-  return usersExercisesPrimitive.map((userExercisesPrimitive) =>
-    UserExercises.fromPrimitives(userExercisesPrimitive)
-  );
+  return usersExercisesPrimitive.map(userExercisesPrimitive => UserExercises.fromPrimitives(userExercisesPrimitive));
 };

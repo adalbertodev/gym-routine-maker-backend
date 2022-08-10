@@ -7,6 +7,7 @@ export interface ResponseExercise {
   barWeight: number | null;
   rm: number | null;
 }
+
 export interface ExerciseResponse {
   data: ResponseExercise | ResponseExercise[] | null;
   error: ErrorResponse | null;

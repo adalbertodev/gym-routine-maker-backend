@@ -1,6 +1,6 @@
-import { usersExercisesData } from '../../__fixtures__/UserExercisesData';
-import { UserExercisesRepositoryMock } from '../../__mocks__/UserExercisesRepositoryMock';
 import { getUsersExercises } from '../../../../../src/modules/UserExercises/application/use-cases/getUsersExercises';
+import { UserExercisesRepositoryMock } from '../../__mocks__/UserExercisesRepositoryMock';
+import { usersExercisesData } from '../../__fixtures__/UsersExercisesFixtures';
 
 describe('getUsersExercises', () => {
   let repository: UserExercisesRepositoryMock;

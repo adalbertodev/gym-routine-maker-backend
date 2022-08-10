@@ -1,8 +1,8 @@
-import { usersExercisesData } from '../../__fixtures__/UserExercisesData';
-import { UserExercisesRepositoryMock } from '../../__mocks__/UserExercisesRepositoryMock';
-import { updateUserExercisesByPercentage } from '../../../../../src/modules/UserExercises/application/use-cases/updateUserExercisesByPercentage';
-import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
+import { updateUserExercisesRmByPercentage } from '../../../../../src/modules/UserExercises/application/use-cases/updateUserExercisesRmByPercentage';
 import { UserExercisesNotExist } from '../../../../../src/modules/UserExercises/domain/Errors';
+import { UserExercisesRepositoryMock } from '../../__mocks__/UserExercisesRepositoryMock';
+import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
+import { usersExercisesData } from '../../__fixtures__/UsersExercisesFixtures';
 
 describe('updateUserExercisesByPercentage', () => {
   let repository: UserExercisesRepositoryMock;
@@ -17,7 +17,7 @@ describe('updateUserExercisesByPercentage', () => {
     const userExercises = usersExercisesData[0];
     repository.whenSearchThenReturn({ ...userExercises });
 
-    const newUserExercises = await updateUserExercisesByPercentage(userId, repository, percentage);
+    const newUserExercises = await updateUserExercisesRmByPercentage(userId, percentage, repository);
 
     expect(newUserExercises._id.value).toBe(userExercises._id);
 
@@ -27,7 +27,7 @@ describe('updateUserExercisesByPercentage', () => {
       const calculatedNewRm = expectedExercise?.rm ? ((expectedExercise.rm + barWeight) * (1 + percentage)) - barWeight : null;
       const expectedExerciseRm = calculatedNewRm ? Math.floor(calculatedNewRm * 100) / 100 : null;
 
-      expect(exercise.rm?.value).toBe(expectedExerciseRm);
+      expect(exercise.rm?.value || null).toBe(expectedExerciseRm);
     }
   });
 
@@ -37,7 +37,7 @@ describe('updateUserExercisesByPercentage', () => {
     const userExercises = usersExercisesData[0];
     repository.whenSearchThenReturn({ ...userExercises, exercises: [] });
 
-    const newUserExercises = await updateUserExercisesByPercentage(userId, repository, percentage);
+    const newUserExercises = await updateUserExercisesRmByPercentage(userId, percentage, repository);
 
     expect(newUserExercises._id.value).toBe(userExercises._id);
 
@@ -50,7 +50,7 @@ describe('updateUserExercisesByPercentage', () => {
     const userExercises = { ...usersExercisesData[0], exercises: usersExercisesData[0].exercises.map(exercise => ({ ...exercise, rm: null })) };
     repository.whenSearchThenReturn({ ...userExercises });
 
-    const newUserExercises = await updateUserExercisesByPercentage(userId, repository, percentage);
+    const newUserExercises = await updateUserExercisesRmByPercentage(userId, percentage, repository);
 
     for (const exercise of newUserExercises.exercises) {
       expect(exercise.rm).toBeNull();
@@ -63,7 +63,7 @@ describe('updateUserExercisesByPercentage', () => {
     repository.whenSearchThenReturn(null);
 
     try {
-      const newUserExercises = await updateUserExercisesByPercentage(userId, repository, percentage);
+      const newUserExercises = await updateUserExercisesRmByPercentage(userId, percentage, repository);
       expect(newUserExercises).toEqual(null);
     } catch (error) {
       expect(error).toBeInstanceOf(UserExercisesNotExist);

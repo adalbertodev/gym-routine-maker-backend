@@ -1,6 +1,6 @@
 import { EnumValueObject } from '../../../Shared/domain/value-object/EnumValueObject';
-import { InvalidArgumentError } from '../../../Shared/domain/value-object/InvalidArgumentError';
 import { ExerciseMuscles } from '../interfaces/ExerciseMuscles';
+import { InvalidArgumentError } from '../../../Shared/domain/value-object/InvalidArgumentError';
 
 export class ExerciseMuscle extends EnumValueObject<`${ExerciseMuscles}`> {
   constructor(value: string) {

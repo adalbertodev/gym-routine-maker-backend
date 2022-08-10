@@ -1,9 +1,9 @@
-import { usersExercisesData } from '../../__fixtures__/UserExercisesData';
-import { UserExercisesRepositoryMock } from '../../__mocks__/UserExercisesRepositoryMock';
-import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
 import { getUserExercises } from '../../../../../src/modules/UserExercises/application/use-cases/getUserExercises';
 import { UserExercisesNotExist } from '../../../../../src/modules/UserExercises/domain/Errors';
+import { UserExercisesRepositoryMock } from '../../__mocks__/UserExercisesRepositoryMock';
+import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
 import { UserIdMother } from '../../../Shared/domain/UserIdMother';
+import { usersExercisesData } from '../../__fixtures__/UsersExercisesFixtures';
 
 describe('getUserExercises', () => {
   let repository: UserExercisesRepositoryMock;

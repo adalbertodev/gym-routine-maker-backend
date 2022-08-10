@@ -1,17 +1,19 @@
 import { Response } from 'express';
 
-import { ExerciseAlreadyExists, ExerciseNotExist } from '../../domain/Errors';
-import { SaveExerciseRequest, UserExercisesResponse } from '../interfaces';
-import { InvalidArgumentError } from '../../../Shared/domain/value-object/InvalidArgumentError';
-import { updateExercise } from '../use-cases/updateExercise';
+import { convertToResponseUserExercises } from '../utils';
 import { Exercise } from '../../domain/UserExercises';
+import { ExerciseAlreadyExists, ExerciseNotExist } from '../../domain/Errors';
+import { InvalidArgumentError } from '../../../Shared/domain/value-object/InvalidArgumentError';
+import { SaveExerciseRequestBody, UserExercisesResponse } from '../interfaces';
+import { TypedRequest } from '../../../Shared/application/interfaces/TypedRequest';
+import { updateExercise } from '../use-cases/updateExercise';
 import { UserExercisesConnectionManager } from '../../infrastructure/persistence/UserExercisesConnectionManager';
 import { UserId } from '../../../Shared/domain/UserId';
-import { convertToResponseUserExercises } from '../utils';
 
 export const updateExerciseController = async(
-  req: SaveExerciseRequest,
-  res: Response<UserExercisesResponse>) => {
+  req: TypedRequest<SaveExerciseRequestBody>,
+  res: Response<UserExercisesResponse>
+) => {
   const { id, userId } = req.params;
   const exerciseBody = req.body;
   const exercise = Exercise.fromPrimitives({ ...exerciseBody, _id: id });

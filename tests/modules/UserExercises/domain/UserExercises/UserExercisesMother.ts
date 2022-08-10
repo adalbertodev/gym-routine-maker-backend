@@ -1,7 +1,7 @@
-import { ExerciseMother } from '.';
-import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
-import { UserExercises } from '../../../../../src/modules/UserExercises/domain/UserExercises/UserExercises';
 import { Exercise } from '../../../../../src/modules/UserExercises/domain/UserExercises';
+import { ExerciseMother } from '.';
+import { UserExercises } from '../../../../../src/modules/UserExercises/domain/UserExercises/UserExercises';
+import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
 import { UserIdMother } from '../../../Shared/domain/UserIdMother';
 
 export class UserExercisesMother {
@@ -9,7 +9,7 @@ export class UserExercisesMother {
     return new UserExercises(_id, exercises);
   };
 
-  public static random = (options?: { barWeight?: boolean; rm?: boolean }) => {
+  public static random = () => {
     return this.create(UserIdMother.random(), [ExerciseMother.random(), ExerciseMother.random()]);
   };
 }

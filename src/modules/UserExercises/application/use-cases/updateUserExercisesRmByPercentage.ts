@@ -1,12 +1,12 @@
-import { UserId } from '../../../Shared/domain/UserId';
 import { UserExercisesNotExist } from '../../domain/Errors/UserExercisesNotExist';
 import { UserExercisesPrimitive } from '../../domain/interfaces';
 import { UserExercisesRepository, UserExercises } from '../../domain/UserExercises';
+import { UserId } from '../../../Shared/domain/UserId';
 
-export const updateUserExercisesByPercentage = async(
+export const updateUserExercisesRmByPercentage = async(
   userId: UserId,
-  repository: UserExercisesRepository,
-  percentage: number
+  percentage: number,
+  repository: UserExercisesRepository
 ): Promise<UserExercises> => {
   const userExercisesPrimitive = await repository.search(userId);
   if (!userExercisesPrimitive) throw new UserExercisesNotExist(userId.value);
@@ -16,7 +16,7 @@ export const updateUserExercisesByPercentage = async(
     exercises: userExercisesPrimitive.exercises.map(exercise => {
       const barWeight = exercise.barWeight || 0;
       const percentageAdded = 1 + percentage;
-      const newRm = exercise.rm ? ((exercise.rm + barWeight) * percentageAdded) - barWeight : null;
+      const newRm = exercise.rm ? (exercise.rm + barWeight) * percentageAdded - barWeight : null;
 
       return {
         ...exercise,

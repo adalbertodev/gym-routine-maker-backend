@@ -1,16 +1,15 @@
-import { Request, Response } from 'express';
-import { UserId } from '../../../Shared/domain/UserId';
-import { InvalidArgumentError } from '../../../Shared/domain/value-object/InvalidArgumentError';
+import { Response } from 'express';
+
+import { convertToResponseUserExercises } from '../utils';
+import { deleteExercise } from '../use-cases/deleteExercise';
 import { ExerciseId } from '../../domain/UserExercises';
+import { InvalidArgumentError } from '../../../Shared/domain/value-object/InvalidArgumentError';
+import { TypedRequest } from '../../../Shared/application/interfaces/TypedRequest';
 import { UserExercisesConnectionManager } from '../../infrastructure/persistence/UserExercisesConnectionManager';
 import { UserExercisesResponse } from '../interfaces';
-import { deleteExercise } from '../use-cases/deleteExercise';
-import { convertToResponseUserExercises } from '../utils';
+import { UserId } from '../../../Shared/domain/UserId';
 
-export const deleteExerciseController = async(
-  req: Request,
-  res: Response<UserExercisesResponse>
-) => {
+export const deleteExerciseController = async(req: TypedRequest<any>, res: Response<UserExercisesResponse>) => {
   const { id, userId } = req.params;
 
   try {

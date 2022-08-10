@@ -1,16 +1,14 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 
+import { convertToResponseUserExercises } from '../utils/convertToResponseUserExercises';
 import { getUserExercises } from '../use-cases/getUserExercises';
+import { TypedRequest } from '../../../Shared/application/interfaces/TypedRequest';
 import { UserExercisesConnectionManager } from '../../infrastructure/persistence/UserExercisesConnectionManager';
 import { UserExercisesNotExist } from '../../domain/Errors/UserExercisesNotExist';
 import { UserExercisesResponse } from '../interfaces/UserExercisesResponse';
-import { convertToResponseUserExercises } from '../utils/convertToResponseUserExercises';
 import { UserId } from '../../../Shared/domain/UserId';
 
-export const getUserExercisesController = async(
-  req: Request,
-  res: Response<UserExercisesResponse>
-) => {
+export const getUserExercisesController = async(req: TypedRequest<any>, res: Response<UserExercisesResponse>) => {
   const { userId } = req.params;
 
   try {

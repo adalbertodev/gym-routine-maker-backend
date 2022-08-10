@@ -1,5 +1,5 @@
-import { NumberValueObject } from '../../../Shared/domain/value-object/IntValueObject';
 import { InvalidArgumentError } from '../../../Shared/domain/value-object/InvalidArgumentError';
+import { NumberValueObject } from '../../../Shared/domain/value-object/IntValueObject';
 
 export class ExerciseRm extends NumberValueObject {
   constructor(value: number) {

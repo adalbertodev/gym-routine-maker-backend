@@ -31,8 +31,8 @@ export class ExerciseMother {
       ExerciseIdMother.random(),
       ExerciseNameMother.random(),
       ExerciseMuscleMother.random(),
-      options?.barWeight ? ExerciseBarWeightMother.random() : null,
-      options?.rm ? ExerciseRmMother.random() : null
+      !options || options?.barWeight ? ExerciseBarWeightMother.random() : null,
+      !options || options?.rm ? ExerciseRmMother.random() : null
     );
   };
 }

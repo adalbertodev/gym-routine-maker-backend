@@ -1,26 +1,26 @@
 import { UserIdMother } from '../../Shared/domain/UserIdMother';
-import { UserExercises } from '../../../../src/modules/UserExercises/domain/UserExercises/UserExercises';
-import { generateRandomExercise } from './ExercisesFixtures';
 import { UserExercisesMother } from '../domain/UserExercises/UserExercisesMother';
+import { randomExercise } from './ExercisesFixtures';
 
-export const randomUserExercises = UserExercisesMother.random();
+export const randomUserExercises = () => UserExercisesMother.random();
 
-export const generateRandomUserExercises = () => {
-  return new UserExercises(
-    UserIdMother.random(),
-    [
-      generateRandomExercise(),
-      generateRandomExercise()
-    ]
-  );
-};
-
-export const generateRandomUserExercisesValues = generateRandomUserExercises().toPrimitives();
+export const randomUserExercisesValues = () => randomUserExercises().toPrimitives();
 
 export const randomUserExercisesObjectValues = {
   _id: UserIdMother.random(),
   exercises: [
-    generateRandomExercise(),
-    generateRandomExercise()
+    randomExercise(),
+    randomExercise()
   ]
 };
+
+export const usersExercisesData = [
+  randomUserExercisesValues(),
+  randomUserExercisesValues(),
+  randomUserExercisesValues(),
+  randomUserExercisesValues(),
+  randomUserExercisesValues(),
+  randomUserExercisesValues(),
+  randomUserExercisesValues(),
+  randomUserExercisesValues()
+];

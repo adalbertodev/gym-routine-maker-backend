@@ -1,9 +1,9 @@
-import { usersExercisesData } from '../../__fixtures__/UserExercisesData';
 import { Exercise, UserExercises } from '../../../../../src/modules/UserExercises/domain/UserExercises';
-import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
-import { updateExercise } from '../../../../../src/modules/UserExercises/application/use-cases/updateExercise';
 import { ExerciseAlreadyExists, ExerciseNotExist, UserExercisesNotExist } from '../../../../../src/modules/UserExercises/domain/Errors';
+import { updateExercise } from '../../../../../src/modules/UserExercises/application/use-cases/updateExercise';
 import { UserExercisesRepositoryMock } from '../../__mocks__/UserExercisesRepositoryMock';
+import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
+import { usersExercisesData } from '../../__fixtures__/UsersExercisesFixtures';
 
 describe('updateExercise', () => {
   let repository: UserExercisesRepositoryMock;

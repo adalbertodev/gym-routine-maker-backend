@@ -1,5 +1,5 @@
-import { UserExercises } from '../../../../../src/modules/UserExercises/domain/UserExercises';
 import { randomUserExercisesObjectValues } from '../../__fixtures__/UsersExercisesFixtures';
+import { UserExercises } from '../../../../../src/modules/UserExercises/domain/UserExercises';
 
 describe('UserExercises', () => {
   test('should return a new user exercises instance', () => {

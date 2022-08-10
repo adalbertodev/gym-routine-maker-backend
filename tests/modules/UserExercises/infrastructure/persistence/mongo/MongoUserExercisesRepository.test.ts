@@ -1,9 +1,9 @@
 import { EnvironmentArranger } from '../../../../Shared/infrastructure/persistence/arranger/EnvironmentArranger';
 import { MongoClientFactory } from '../../../../../../src/modules/Shared/infrastructure/persistence/mongo/MongoClientFactory';
 import { MongoEnvironmentArranger } from '../../../../Shared/infrastructure/persistence/mongo/MongoEnvironmentArranger';
-import { UserExercisesRepository } from '../../../../../../src/modules/UserExercises/domain/UserExercises';
 import { MongoUserExercisesRepository } from '../../../../../../src/modules/UserExercises/infrastructure/persistence/mongo/MongoUserExercisesRepository';
 import { UserExercisesMother } from '../../../domain/UserExercises/UserExercisesMother';
+import { UserExercisesRepository } from '../../../../../../src/modules/UserExercises/domain/UserExercises';
 
 describe('MongoUserExercisesRepository', () => {
   const client = MongoClientFactory.createClient('test', { url: process.env.MONGO_URL || '' });

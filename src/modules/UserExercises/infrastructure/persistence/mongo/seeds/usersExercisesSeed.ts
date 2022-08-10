@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 
+import { UserExercises } from '../../../../domain/UserExercises/UserExercises';
 import { UserExercisesConnectionManager } from '../../UserExercisesConnectionManager';
 import { usersExercisesSeedData } from './usersExercisesSeedData';
-import { UserExercises } from '../../../../domain/UserExercises/UserExercises';
 
 export const usersExercisesSeed = async(): Promise<void> => {
   dotenv.config({ path: '.env.dev' });

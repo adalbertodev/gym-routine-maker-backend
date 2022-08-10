@@ -1,8 +1,8 @@
 import { MongoRepository } from '../../../../Shared/infrastructure/persistence/mongo/MongoRepository';
 import { Nullable } from '../../../../Shared/domain/Nullable';
+import { UserExercises, UserExercisesRepository } from '../../../domain/UserExercises';
 import { UserExercisesPrimitive } from '../../../domain/interfaces';
 import { UserId } from '../../../../Shared/domain/UserId';
-import { UserExercises, UserExercisesRepository } from '../../../domain/UserExercises';
 
 export class MongoUserExercisesRepository extends MongoRepository<UserExercises> implements UserExercisesRepository {
   public save = (userExercise: UserExercises): Promise<void> => {
@@ -31,6 +31,10 @@ export class MongoUserExercisesRepository extends MongoRepository<UserExercises>
   };
 
   public reset = async() => {
+    if (process.env.NODE_ENV !== 'dev') {
+      return;
+    }
+
     const collection = await this.collection();
     await collection.deleteMany({});
   };

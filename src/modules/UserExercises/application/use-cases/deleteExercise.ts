@@ -16,7 +16,10 @@ export const deleteExercise = async(
     throw new ExerciseNotExist(exerciseId.value);
   }
 
-  const newUserExercises = UserExercises.fromPrimitives({ _id, exercises: exercises.filter(exercise => exercise._id !== exerciseId.value) });
+  const newUserExercises = UserExercises.fromPrimitives({
+    _id,
+    exercises: exercises.filter(exercise => exercise._id !== exerciseId.value)
+  });
 
   await repository.save(newUserExercises);
   return newUserExercises;
