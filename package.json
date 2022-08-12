@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./dist/app/index.js",
+    "start": "set NODE_ENV=production&& node ./dist/app/index.js",
     "build": "tsc",
     "dev": "ts-node-dev ./src/app/index.ts",
     "test": "jest --watchAll",

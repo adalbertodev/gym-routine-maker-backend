@@ -1,8 +1,20 @@
+x-app-service:
+
+
 services:
-  teslodb:
+  mongo:
     image: mongo:5.0.0
-    container_name: gym-routine-database
     ports:
       - 27017:27017
     volumes:
       - C:\Users\adalb\workspace\Web Development\Databases\mongo\gym-routine:/data/db
+
+  api:
+    build: .
+    ports:
+      - 5000:5000
+    environment:
+      - NODE_ENV=production
+      - MONGO_URL=mongodb://mongo:27017/gym-routine-DB
+    depends_on: 
+      - mongo

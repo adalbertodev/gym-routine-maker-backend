@@ -4,7 +4,8 @@ import glob from 'glob';
 import { Route } from '../../modules/Shared/application/interfaces/Route';
 
 export const registerRoutes = (router: Router) => {
-  const routes = glob.sync('./src/modules/**/*.route.ts', { absolute: true });
+  const directory = process.env.NODE_ENV === 'production' ? 'dist' : 'src';
+  const routes = glob.sync(`./${directory}/modules/**/*.route.?(js|ts)`, { absolute: true });
   routes.map(async(route) => await register(route, router));
 
   return router;
