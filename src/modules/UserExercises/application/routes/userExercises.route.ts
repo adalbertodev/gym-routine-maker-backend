@@ -1,17 +1,21 @@
 import { Router } from 'express';
-import { newExerciseMiddlewares, updateExerciseMiddlewares, deleteExerciseMiddlewares } from '../middlewares/userExercisesMiddlewares';
 
 import {
-  getUsersExercisesController,
+  deleteExerciseController,
   getUserExercisesController,
-  updateUsersExercisesByPercentageController,
+  getUsersExercisesController,
   newExerciseController,
+  newUserExercisesController,
   updateExerciseController,
-  deleteExerciseController
+  updateUsersExercisesByPercentageController
 } from '../controllers';
 import {
+  deleteExerciseMiddlewares,
   getUserExercisesMiddlewares,
   getUsersExercisesMiddlewares,
+  newExerciseMiddlewares,
+  newUserExercisesMiddlewares,
+  updateExerciseMiddlewares,
   updateUserExercisesByPercentageMiddlewares
 } from '../middlewares';
 
@@ -24,6 +28,7 @@ export const registerRoutes = (router: Router) => {
     updateUsersExercisesByPercentageController
   );
 
+  router.post('/:userId/exercises/new', newUserExercisesMiddlewares, newUserExercisesController);
   router.post('/:userId/exercises', newExerciseMiddlewares, newExerciseController);
   router.put('/:userId/exercises/:id', updateExerciseMiddlewares, updateExerciseController);
   router.delete('/:userId/exercises/:id', deleteExerciseMiddlewares, deleteExerciseController);

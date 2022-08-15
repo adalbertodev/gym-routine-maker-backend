@@ -11,6 +11,10 @@ export const getUsersExercisesMiddlewares = [verifyIsAdminMiddleware];
 
 export const getUserExercisesMiddlewares = [validateUserIdMiddleware];
 
+export const newUserExercisesMiddlewares = [
+  validateUserIdMiddleware
+];
+
 export const newExerciseMiddlewares = [
   validateUserIdMiddleware,
   param('userId', 'El id del usuario no es válido').isLength({ min: 30 }),
