@@ -16,7 +16,7 @@ This is a personal project that was built as the REST API of a personal page abo
     npm install
 ```
 
-2. Rename .env.template to .env.dev and fill it
+2. Duplite 2 times .env.template and rename them to .env.dev, .env.production and .env.test, and fill them
    
 3. Set up the docker container
 ```

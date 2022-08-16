@@ -1,11 +1,11 @@
 import { Server } from './server';
+import config from './config';
 
 export class App {
   server?: Server;
 
   public start = () => {
-    const port = process.env.PORT || '5000';
-    this.server = new Server(port);
+    this.server = new Server(config.app.port);
     return this.server.listen();
   };
 

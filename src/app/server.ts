@@ -1,9 +1,10 @@
 import express, { Application, Router } from 'express';
 import http from 'http';
-import dotenv from 'dotenv';
+
 import cookieParser from 'cookie-parser';
 
 import { registerRoutes } from './routes';
+import config from './config';
 
 export class Server {
   private app: Application;
@@ -13,9 +14,8 @@ export class Server {
   constructor(port: string) {
     this.port = port;
     this.app = express();
-    const env = process.env.NODE_ENV || 'dev';
-    this.app.set('env', env);
-    dotenv.config({ path: `.env.${env}` });
+    this.app.set('env', config.env);
+
     this.middleware();
 
     const router = Router();
@@ -30,11 +30,7 @@ export class Server {
 
   public listen = () => {
     this.httpServer = this.app.listen(this.port, () => {
-      console.log(
-        `App is running at http://localhost:${this.port} in ${this.app.get(
-          'env'
-        )} mode`
-      );
+      console.log(`App is running at http://localhost:${this.port} in ${this.app.get('env')} mode`);
       console.log('\nPress CTRL-C to stop...');
     });
   };
