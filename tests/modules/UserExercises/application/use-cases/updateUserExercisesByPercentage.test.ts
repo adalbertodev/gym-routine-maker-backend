@@ -3,6 +3,7 @@ import { UserExercisesNotExist } from '../../../../../src/modules/UserExercises/
 import { UserExercisesRepositoryMock } from '../../__mocks__/UserExercisesRepositoryMock';
 import { UserId } from '../../../../../src/modules/Shared/domain/UserId';
 import { usersExercisesData } from '../../__fixtures__/UsersExercisesFixtures';
+import { roundNumber } from '../../../../../src/modules/Shared/application/utils/roundNumber';
 
 describe('updateUserExercisesByPercentage', () => {
   let repository: UserExercisesRepositoryMock;
@@ -25,7 +26,7 @@ describe('updateUserExercisesByPercentage', () => {
       const expectedExercise = userExercises.exercises.find(exercises => exercises._id === exercise._id.value);
       const barWeight = expectedExercise?.barWeight || 0;
       const calculatedNewRm = expectedExercise?.rm ? ((expectedExercise.rm + barWeight) * (1 + percentage)) - barWeight : null;
-      const expectedExerciseRm = calculatedNewRm ? Math.floor(calculatedNewRm * 100) / 100 : null;
+      const expectedExerciseRm = calculatedNewRm ? roundNumber(calculatedNewRm) : null;
 
       expect(exercise.rm?.value || null).toBe(expectedExerciseRm);
     }

@@ -4,9 +4,11 @@ import { MongoEnvironmentArranger } from '../../../../Shared/infrastructure/pers
 import { MongoUserRepository } from '../../../../../../src/modules/Auth/infrastructure/persistence/mongo/MongoUserRepository';
 import { UserMother } from '../../../domain/User';
 import { UserRepository } from '../../../../../../src/modules/Auth/domain/User';
+import { MongoConfigFactory } from '../../../../../../src/modules/Shared/infrastructure/persistence/mongo/MongoConfigFactory';
 
 describe('MongoUserRepository', () => {
-  const client = MongoClientFactory.createClient('test', { url: process.env.MONGO_URL || '' });
+  const config = MongoConfigFactory.createConfig();
+  const client = MongoClientFactory.createClient('test', config);
   const repository: UserRepository = new MongoUserRepository(client);
   const environmentArranger: EnvironmentArranger = new MongoEnvironmentArranger(client);
 

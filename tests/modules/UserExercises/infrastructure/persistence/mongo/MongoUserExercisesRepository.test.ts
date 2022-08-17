@@ -4,9 +4,11 @@ import { MongoEnvironmentArranger } from '../../../../Shared/infrastructure/pers
 import { MongoUserExercisesRepository } from '../../../../../../src/modules/UserExercises/infrastructure/persistence/mongo/MongoUserExercisesRepository';
 import { UserExercisesMother } from '../../../domain/UserExercises/UserExercisesMother';
 import { UserExercisesRepository } from '../../../../../../src/modules/UserExercises/domain/UserExercises';
+import { MongoConfigFactory } from '../../../../../../src/modules/Shared/infrastructure/persistence/mongo/MongoConfigFactory';
 
 describe('MongoUserExercisesRepository', () => {
-  const client = MongoClientFactory.createClient('test', { url: process.env.MONGO_URL || '' });
+  const config = MongoConfigFactory.createConfig();
+  const client = MongoClientFactory.createClient('test', config);
   const repository: UserExercisesRepository = new MongoUserExercisesRepository(client);
   const environmentArranger: EnvironmentArranger = new MongoEnvironmentArranger(client);
 
