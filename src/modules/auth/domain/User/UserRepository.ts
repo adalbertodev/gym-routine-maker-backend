@@ -10,5 +10,7 @@ export interface UserRepository {
   search: (id: UserId) => Promise<Nullable<UserPrimitive>>;
   searchByEmail: (email: UserEmail) => Promise<Nullable<UserPrimitive>>;
 
+  delete: (id: UserId) => Promise<Nullable<UserPrimitive>>;
+
   reset: () => Promise<void>;
 }

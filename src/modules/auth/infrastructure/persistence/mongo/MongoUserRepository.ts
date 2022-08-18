@@ -30,6 +30,13 @@ export class MongoUserRepository extends MongoRepository<User> implements UserRe
     return document;
   };
 
+  public delete = async(id: UserId): Promise<Nullable<UserPrimitive>> => {
+    const collection = await this.collection();
+    const document = await collection.findOneAndDelete({ _id: id.value });
+
+    return document.value as Nullable<UserPrimitive>;
+  };
+
   public reset = async() => {
     if (process.env.NODE_ENV !== 'dev') {
       return;

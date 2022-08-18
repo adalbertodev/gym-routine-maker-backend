@@ -82,4 +82,26 @@ describe('MongoUserRepository', () => {
       expect(user).toEqual(userPrimitiveExpected);
     });
   });
+
+  describe('#delete', () => {
+    test('should return the user deleted', async() => {
+      const userExpected = UserMother.random();
+
+      await repository.save(userExpected);
+      const deletedUser = await repository.delete(userExpected._id);
+
+      expect(deletedUser).toEqual(userExpected.toPrimitives());
+    });
+
+    test('should to be deleted of the database', async() => {
+      const userExpected = UserMother.random();
+
+      await repository.save(userExpected);
+      await repository.delete(userExpected._id);
+
+      const searchedUser = await repository.search(userExpected._id);
+
+      expect(searchedUser).toBeNull();
+    });
+  });
 });

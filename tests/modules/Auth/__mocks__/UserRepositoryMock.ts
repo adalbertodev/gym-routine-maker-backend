@@ -25,6 +25,10 @@ export class UserRepositoryMock implements UserRepository {
     return await this.mockSearch(email.value);
   };
 
+  delete = async(id: UserId): Promise<Nullable<UserPrimitive>> => {
+    return await this.mockSearch(id.value);
+  };
+
   reset = async(): Promise<void> => {
     await this.mockReset();
   };
